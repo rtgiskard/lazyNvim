@@ -76,8 +76,7 @@ M.plugins = {
 
 			-- linters
 			nls.builtins.diagnostics.clang_check,
-			-- nls.builtins.diagnostics.flake8,
-			nls.builtins.diagnostics.pyproject_flake8,
+			nls.builtins.diagnostics.flake8,
 		}
 	end,
 

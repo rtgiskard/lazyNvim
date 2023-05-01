@@ -9,8 +9,11 @@ M.basic = {
 
 	{ '<C-t>', util.float_term, desc = 'Float Terminal' },
 
-	{ '<S-F1>', util.toggle_mouse, desc = 'Toggle Mouse' },
-	{ '<S-F2>', util.toggle_number, desc = 'Toggle Number' },
+	-- for compatability: `S-F2` == `F14` and etc.
+	{ '<S-F1>', util.toggle_number, desc = 'Toggle Number' },
+	{ '<S-F2>', util.toggle_mouse, desc = 'Toggle Mouse' },
+	{ '<F13>', util.toggle_number, desc = 'Toggle Number' },
+	{ '<F14>', util.toggle_mouse, desc = 'Toggle Mouse' },
 }
 
 -- keymaps for plugins
@@ -19,7 +22,17 @@ M.neotree = { { '<F1>', '<cmd>Neotree toggle<cr>', desc = 'Toggle Neotree' } }
 M.trouble = { { '<F2>', '<cmd>TroubleToggle<cr>', desc = 'Toggle Trouble' } }
 
 M.trim = {
-	{ '<leader>ss', '<cmd>Trim<cr>', desc = 'Trim Shortcut' },
+	{ '<C-1>', '<cmd>Trim<cr>', desc = 'Trim Space' },
+}
+
+M.notify = {
+	{
+		'<C-2>',
+		function()
+			require('notify').dismiss({ silent = true, pending = true })
+		end,
+		desc = 'Silent Popup Notifications',
+	},
 }
 
 M.bufferline = {
@@ -47,17 +60,6 @@ M.persistence = {
 	{ '<leader>Sl', function() require('persistence').load() end, desc = 'Load Session' },
 }
 
-M.notify = {
-	{
-		'<leader>q',
-		function()
-			require('notify').dismiss({ silent = true, pending = true })
-		end,
-		desc = 'Delete all Notifications',
-	},
-}
-
--- stylua: ignore
 M.lsp = {
 	{ 'gD', vim.lsp.buf.declaration, desc = 'Goto Declaration' },
 	{ 'gr', '<cmd>Telescope lsp_references<cr>', desc = 'Goto References' },
@@ -96,7 +98,7 @@ M.mini_comment = {
 M.cmp_mapping = function(cmp)
 	-- stylua: ignore
 	return cmp.mapping.preset.insert({
-		['<C-Space>'] = cmp.mapping.complete(),
+		['<C-Tab>'] = cmp.mapping.complete(),
 		['<C-e>'] = cmp.mapping.abort(),
 		['<C-n>'] = cmp.mapping.select_next_item({behavior = cmp.SelectBehavior.Insert}),
 		['<C-p>'] = cmp.mapping.select_prev_item({behavior = cmp.SelectBehavior.Insert}),
@@ -110,7 +112,7 @@ end
 
 -- ts-refactor: internal map
 M.ts_refactor = {
-	rename = { smart_rename = 'grr' },
+	rename = { smart_rename = 'gR' },
 	navigate = {
 		goto_definition = 'gd',
 		list_definitions = 'gl',
