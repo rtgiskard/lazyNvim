@@ -3,14 +3,19 @@ local M = {}
 function M.toggle_mouse()
 	if vim.o.mouse == '' then
 		vim.o.mouse = 'nvi'
+		vim.notify('󰍽 mouse: ' .. vim.o.mouse, vim.log.levels.INFO)
 	else
 		vim.o.mouse = ''
+		vim.notify('󰍾 mouse: ' .. vim.o.mouse, vim.log.levels.INFO)
 	end
-	vim.notify('`o.mouse` set to: ' .. vim.o.mouse, vim.log.levels.INFO)
 end
 
 function M.toggle_number()
 	vim.o.number = not vim.o.number
+end
+
+function M.toggle_listchars()
+	vim.o.list = not vim.o.list
 end
 
 function M.float_term(cmd, opts)

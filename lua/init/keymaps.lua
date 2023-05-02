@@ -9,11 +9,13 @@ M.basic = {
 
 	{ '<C-t>', util.float_term, desc = 'Float Terminal' },
 
-	-- for compatability: `S-F2` == `F14` and etc.
 	{ '<S-F1>', util.toggle_number, desc = 'Toggle Number' },
 	{ '<S-F2>', util.toggle_mouse, desc = 'Toggle Mouse' },
+	{ '<S-F3>', util.toggle_listchars, desc = 'Toggle ListChars' },
+	-- for compatability: `S-F2` == `F14` and etc.
 	{ '<F13>', util.toggle_number, desc = 'Toggle Number' },
 	{ '<F14>', util.toggle_mouse, desc = 'Toggle Mouse' },
+	{ '<F15>', util.toggle_listchars, desc = 'Toggle ListChars' },
 }
 
 -- keymaps for plugins
