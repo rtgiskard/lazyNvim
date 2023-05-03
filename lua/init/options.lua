@@ -22,6 +22,10 @@ M.opt_o = {
 	list = true,
 	listchars = 'tab:»·,nbsp:+,trail:·,extends:→,precedes:←',
 
+	foldmethod = 'expr',
+	foldexpr = 'nvim_treesitter#foldexpr()',
+	foldenable = false,
+
 	grepprg = 'rg --vimgrep',
 	grepformat = '%f:%l:%c:%m',
 
