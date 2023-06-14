@@ -12,10 +12,22 @@ end
 
 function M.toggle_number()
 	vim.o.number = not vim.o.number
+	vim.notify(' line number: ' .. tostring(vim.o.number), vim.log.levels.INFO)
 end
 
 function M.toggle_listchars()
 	vim.o.list = not vim.o.list
+	vim.notify(' list chars: ' .. tostring(vim.o.list), vim.log.levels.INFO)
+end
+
+function M.toggle_diagnostic()
+	local state = vim.diagnostic.is_disabled()
+	if state then
+		vim.diagnostic.enable()
+	else
+		vim.diagnostic.disable()
+	end
+	vim.notify('󰨮 diagnostic: ' .. tostring(state), vim.log.levels.INFO)
 end
 
 function M.float_term(cmd, opts)

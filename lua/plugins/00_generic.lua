@@ -37,10 +37,14 @@ return {
 				},
 				lualine_c = {
 					'filename',
-					-- stylua: ignore
 					{
-						function() return require('nvim-navic').get_location() end,
-						cond = function() return package.loaded['nvim-navic'] and require('nvim-navic').is_available() end,
+						function()
+							return require('nvim-navic').get_location()
+						end,
+						cond = function()
+							return package.loaded['nvim-navic']
+								and require('nvim-navic').is_available()
+						end,
 					},
 				},
 				lualine_x = { 'encoding', 'fileformat', 'filetype' },
@@ -85,10 +89,9 @@ return {
 		'lukas-reineke/indent-blankline.nvim',
 		event = { 'BufReadPost', 'BufNewFile' },
 		opts = {
-			-- char = '▏',
 			char = '│',
 			-- stylua: ignore
-			filetype_exclude = { 'help', 'alpha', 'dashboard', 'neo-tree', 'Trouble', 'lazy' },
+			filetype_exclude = { 'help', 'alpha', 'dashboard', 'neo-tree', 'Trouble', 'lazy', 'mason' },
 			show_trailing_blankline_indent = false,
 			show_current_context = false,
 		},
@@ -99,7 +102,6 @@ return {
 		'echasnovski/mini.indentscope',
 		event = { 'BufReadPost', 'BufNewFile' },
 		opts = {
-			-- symbol = '▏',
 			symbol = '│',
 			options = { try_as_border = true },
 		},

@@ -61,7 +61,7 @@ M.plugins = {
 	lsp_servers = {
 		'clangd',
 		'gopls',
-		'pyright',
+		'pylyzer',
 		'lua_ls',
 		'vala_ls',
 		'rust_analyzer',
@@ -70,7 +70,7 @@ M.plugins = {
 	-- null-ls sources: formatter and linter
 	nls_sources = function(nls)
 		return {
-			-- formatters
+			-- formatter
 			nls.builtins.formatting.clang_format,
 			nls.builtins.formatting.gofmt,
 			nls.builtins.formatting.rustfmt,
@@ -78,9 +78,9 @@ M.plugins = {
 			nls.builtins.formatting.stylua,
 			nls.builtins.formatting.shfmt,
 
-			-- linters
+			-- linter
 			nls.builtins.diagnostics.clang_check,
-			nls.builtins.diagnostics.flake8,
+			nls.builtins.diagnostics.ruff,
 		}
 	end,
 
