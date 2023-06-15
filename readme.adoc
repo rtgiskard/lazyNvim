@@ -1,1 +1,3 @@
 My Neovim config based on https://github.com/LazyVim/LazyVim[LazyVim], with KISS in mind
+
+Reference: https://www.lazyvim.org/[doc & effect]
