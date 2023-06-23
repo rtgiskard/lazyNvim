@@ -58,20 +58,4 @@ return {
 		keys = keymap.todo_comments,
 		config = true,
 	},
-
-	-- codeium ai as complete source for cmp
-	{
-		'jcdickinson/codeium.nvim',
-		lazy = true,
-		cmd = 'Codeium',
-		opts = {},
-		config = function(_, opts)
-			vim.notify('codeium loaded ..', vim.log.levels.INFO)
-			require('codeium').setup(opts)
-		end,
-		dependencies = {
-			'nvim-lua/plenary.nvim',
-			'hrsh7th/nvim-cmp',
-		},
-	},
 }

@@ -8,28 +8,21 @@ return {
 		lazy = false,
 		priority = 1000,
 		-- stylua: ignore
-		config = function() vim.cmd.colorscheme 'tokyonight' end,
+		config = function() vim.cmd.colorscheme('tokyonight-night') end,
 
-		opts = { style = 'night' },
+		opts = {
+			transparent = true,
+		},
 	},
 
-	-- catppuccin
+	-- nightfly
 	{
-		'catppuccin/nvim',
-		name = 'catppuccin',
+		'bluz71/vim-nightfly-colors',
+		name = 'nightfly',
 
 		lazy = true,
 		priority = 1000,
 		-- stylua: ignore
-		config = function() vim.cmd.colorscheme 'catppuccin' end,
-
-		opts = {
-			-- latte, frappe, macchiato, mocha
-			flavour = 'mocha',
-			background = {
-				light = 'latte',
-				dark = 'mocha',
-			},
-		},
+		config = function() vim.cmd.colorscheme 'nightfly' end,
 	},
 }

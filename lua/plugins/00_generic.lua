@@ -140,6 +140,13 @@ return {
 		'nvim-telescope/telescope.nvim',
 		cmd = 'Telescope',
 		keys = keymap.telescope,
+		opts = {
+			pickers = {
+				colorscheme = {
+					enable_preview = true,
+				},
+			},
+		},
 		dependencies = {
 			'nvim-lua/plenary.nvim',
 

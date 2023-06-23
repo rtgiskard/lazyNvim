@@ -61,7 +61,7 @@ M.plugins = {
 	lsp_servers = {
 		'clangd',
 		'gopls',
-		--'pylyzer',
+		-- 'pylyzer',
 		'pyright',
 		'lua_ls',
 		'vala_ls',
