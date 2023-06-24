@@ -50,6 +50,9 @@ M.opt_g = {
 
 -- to be used by lazy
 M.plugins = {
+	-- colorscheme plugin to load
+	colorscheme = 'tokyonight',
+
 	-- stylua: ignore
 	ts_parsers = {
 		'c', 'cpp', 'go', 'python', 'lua', 'vala', 'bash',

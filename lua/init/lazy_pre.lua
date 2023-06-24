@@ -63,6 +63,9 @@ function M.load_lazy()
 			},
 		},
 	})
+
+	-- load specified colorscheme
+	require(require('init.options').plugins.colorscheme).load()
 end
 
 return M

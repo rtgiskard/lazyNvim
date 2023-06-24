@@ -1,16 +1,15 @@
 return {
-	-- NOTE: set the `lazy = false` to enable the color scheme
+	-- colortheme is load right after lazy setup
 
 	-- tokyonight
 	{
 		'folke/tokyonight.nvim',
 
-		lazy = false,
+		lazy = true,
 		priority = 1000,
-		-- stylua: ignore
-		config = function() vim.cmd.colorscheme('tokyonight-night') end,
 
 		opts = {
+			style = 'night',
 			transparent = true,
 		},
 	},
@@ -22,7 +21,5 @@ return {
 
 		lazy = true,
 		priority = 1000,
-		-- stylua: ignore
-		config = function() vim.cmd.colorscheme 'nightfly' end,
 	},
 }
