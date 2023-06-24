@@ -1,3 +1,93 @@
-My Neovim config based on https://github.com/LazyVim/LazyVim[LazyVim], with KISS in mind
+= 📜 About
 
-Reference: https://www.lazyvim.org/[doc & effect]
+This is my personal neovim config inspired by https://github.com/LazyVim/LazyVim[LazyVim], with KISS in mind.
+
+
+== ✨ Features
+
+- KISS: simple and stupid, less is better
+- Easy: either to understand or to extend
+- Fast: modern neovim config with pure lua
+- Ready: comfortable and convenient out of the box
+
+
+== 🖼️ Effects
+
+- dashboard
++
+image::https://github.com/rtgiskard/lazyNvim/assets/34635040/7ce5b2f5-4ebb-48e4-9737-07ebaf6d1abb[eg_dashboard, align="center", width=50%]
+
+- coding
++
+image::https://github.com/rtgiskard/lazyNvim/assets/34635040/2794ba46-f23f-4d35-8782-372f36362ea0[eg_coding, align="center"]
+
+- plugins
++
+image::https://github.com/rtgiskard/lazyNvim/assets/34635040/5f8be720-5db7-4e93-baf0-c08dfb15f1a0[eg_plugins, align="center"]
+
+- float terminal
++
+image::https://github.com/rtgiskard/lazyNvim/assets/34635040/51879053-e56c-434a-8f20-b22c635e31b5[eg_term, align="center"]
+
+
+== ⚡️ Requirements
+
+- Neovim >= *0.8.0* (needs to be built with *LuaJIT*)
+- Git >= *2.19.0* (for partial clones support)
+- a https://www.nerdfonts.com/[Nerd Font] *_(optional)_*
+- a *C* compiler for `nvim-treesitter`. See https://github.com/nvim-treesitter/nvim-treesitter#requirements[here]
+
+
+== 🚀 Getting Started
+
+[source,bash]
+----
+# backup your neovim config
+mkdir -p nvim
+mv ~/.config/nvim/ nvim/nv.config
+mv ~/.local/share/nvim/ nvim/nv.share
+mv ~/.local/state/nvim/ nvim/nv.state
+mv ~/.cache/nvim/ nvim/nv.cache
+
+# clone the repo
+git clone https://github.com/rtgiskard/lazyNvim.git ~/.config/nvim
+
+# luanch
+nvim
+
+# enter `Y` to install lazy.nvim and the plugins
+----
+
+
+== ⚙️ Configuration
+
+`lua/init/options.lua`::
+	most of neovim's options and some of the plugins' specs are configured here
+
+`lua/init/keymaps.lua`::
+	except for nvim and plugins' default, all manually configured keymaps are maintained here
+
+`lua/plugins/`::
+	define all the plugins managed by `lazy.nvim` with the spec settings
+
+You may want to adjust the lsp server list in `lua/init/options.lua::plugins` as you need.
+And note that some of the settings are switchable via keymaps (like mouse, linenumber, listchars and etc.),
+of course you can define more with the handlers held in `lua/init/utils.lua`.
+
+And thanks to https://github.com/LazyVim/LazyVim[LazyVim], the https://www.lazyvim.org/[lazyVim's doc]
+can also be a good reference.
+
+
+== ✔️ TODO
+
+- [ ] better DAP integration
+- [ ] any recommendation?
+
+
+== 🧾 License
+
+This project is licensed under the terms of the https://www.gnu.org/licenses/gpl-3.0.html[GPLv3] license.
+
+
+---
+image::https://storage.ko-fi.com/cdn/kofi1.png?v=3[height=40,link='https://ko-fi.com/E1E8MKPBZ']
