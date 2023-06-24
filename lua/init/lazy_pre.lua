@@ -1,4 +1,5 @@
 local M = {}
+local option = require('init.options')
 
 function M.check_load_lazy()
 	local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
@@ -36,19 +37,16 @@ function M.load_lazy()
 		lockfile = vim.fn.stdpath('data') .. '/lazy-lock.json',
 
 		defaults = { lazy = false, version = false },
-		checker = { enabled = false, frequency = 86400 },
+		checker = { enabled = option.plugins.auto_check, frequency = 86400 },
 		install = {
-			-- NOTE: set to false for no auto install on startup
-			missing = true,
-			colorscheme = { 'tokyonight', 'habamax' },
+			missing = option.plugins.auto_install,
+			colorscheme = { option.plugins.colorscheme, 'habamax' },
 		},
-
 		ui = {
 			wrap = true,
 			border = 'rounded',
 			size = { width = 0.8, height = 0.8 },
 		},
-
 		performance = {
 			rtp = {
 				paths = { '/usr/share/vim/vimfiles' },
@@ -65,7 +63,7 @@ function M.load_lazy()
 	})
 
 	-- load specified colorscheme
-	require(require('init.options').plugins.colorscheme).load()
+	require(option.plugins.colorscheme).load()
 end
 
 return M

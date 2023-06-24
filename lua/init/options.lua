@@ -50,6 +50,10 @@ M.opt_g = {
 
 -- to be used by lazy
 M.plugins = {
+	-- lazy.nvim
+	auto_install = true, -- this should be true on bootsrap, and then can be set to false
+	auto_check = false, -- disable automatically check of updates in background
+
 	-- colorscheme plugin to load
 	colorscheme = 'tokyonight',
 
