@@ -15,19 +15,19 @@ This is my personal neovim config inspired by https://github.com/LazyVim/LazyVim
 
 - dashboard
 +
-image::https://github.com/rtgiskard/lazyNvim/assets/34635040/7ce5b2f5-4ebb-48e4-9737-07ebaf6d1abb[eg_dashboard, align="center", width=50%]
+image::https://github.com/rtgiskard/lazyNvim/assets/34635040/7ce5b2f5-4ebb-48e4-9737-07ebaf6d1abb[align="center", width=50%]
 
 - coding
 +
-image::https://github.com/rtgiskard/lazyNvim/assets/34635040/2794ba46-f23f-4d35-8782-372f36362ea0[eg_coding, align="center"]
+image::https://github.com/rtgiskard/lazyNvim/assets/34635040/2794ba46-f23f-4d35-8782-372f36362ea0[align="center"]
 
 - plugins
 +
-image::https://github.com/rtgiskard/lazyNvim/assets/34635040/5f8be720-5db7-4e93-baf0-c08dfb15f1a0[eg_plugins, align="center"]
+image::https://github.com/rtgiskard/lazyNvim/assets/34635040/5f8be720-5db7-4e93-baf0-c08dfb15f1a0[align="center"]
 
 - float terminal
 +
-image::https://github.com/rtgiskard/lazyNvim/assets/34635040/51879053-e56c-434a-8f20-b22c635e31b5[eg_term, align="center"]
+image::https://github.com/rtgiskard/lazyNvim/assets/34635040/51879053-e56c-434a-8f20-b22c635e31b5[align="center"]
 
 
 == ⚡️ Requirements
@@ -52,7 +52,7 @@ mv ~/.cache/nvim/ nvim/nv.cache
 # clone the repo
 git clone https://github.com/rtgiskard/lazyNvim.git ~/.config/nvim
 
-# luanch
+# launch
 nvim
 
 # enter `Y` to install lazy.nvim and the plugins
@@ -65,7 +65,7 @@ nvim
 	most of neovim's options and some of the plugins' specs are configured here
 
 `lua/init/keymaps.lua`::
-	except for nvim and plugins' default, all manually configured keymaps are maintained here
+	except for nvim and plugins' defaults, all manually configured keymaps are maintained here
 
 `lua/plugins/`::
 	define all the plugins managed by `lazy.nvim` with the spec settings
@@ -78,7 +78,7 @@ And thanks to https://github.com/LazyVim/LazyVim[LazyVim], the https://www.lazyv
 can also be a good reference.
 
 
-== ✔️ TODO
+== ✔️ Todo
 
 - [ ] better DAP integration
 - [ ] any recommendation?
@@ -86,7 +86,7 @@ can also be a good reference.
 
 == 🧾 License
 
-This project is licensed under the terms of the https://www.gnu.org/licenses/gpl-3.0.html[GPLv3] license.
+This project is licensed under the terms of the https://www.gnu.org/licenses/gpl-3.0.html[GPLv3] or any later version.
 
 
 ---
