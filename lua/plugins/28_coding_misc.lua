@@ -1,12 +1,6 @@
 local keymap = require('init.keymaps')
 
 return {
-	-- debug adapter protocol client
-	{
-		'mfussenegger/nvim-dap',
-		lazy = true,
-	},
-
 	-- auto completion
 	{
 		'hrsh7th/nvim-cmp',
