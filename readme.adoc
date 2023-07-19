@@ -37,6 +37,11 @@ image::https://github.com/rtgiskard/lazyNvim/assets/34635040/51879053-e56c-434a-
 - a https://www.nerdfonts.com/[Nerd Font] *_(optional)_*
 - a *C* compiler for `nvim-treesitter`. See https://github.com/nvim-treesitter/nvim-treesitter#requirements[here]
 
+- external tools (configured in `lua/init/options.lua:M.plugins`)
+* treesitter parser: managed by `nvim-treesitter`, installed with `:TSUpdate`
+* lsp server: managed by `mason`, installed with `:MasonUpdate`
+* formatter, linter: used by `null-ls`, generally installed with system package manager
+
 
 == 🚀 Getting Started
 
