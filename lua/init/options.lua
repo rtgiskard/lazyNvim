@@ -79,16 +79,15 @@ M.plugins = {
 	nls_sources = function(nls)
 		return {
 			-- formatter
-			nls.builtins.formatting.clang_format,
-			nls.builtins.formatting.gofmt,
-			nls.builtins.formatting.rustfmt,
-			nls.builtins.formatting.yapf,
-			nls.builtins.formatting.stylua,
-			nls.builtins.formatting.shfmt,
+			nls.builtins.formatting.rustfmt, -- rust
+			nls.builtins.formatting.yapf, -- python
+			nls.builtins.formatting.stylua, -- lua
+			nls.builtins.formatting.shfmt, -- bash script
+			nls.builtins.formatting.xq, -- xml
+			nls.builtins.formatting.prettier, -- js, css, json, html, md, yaml, ..
 
 			-- linter
-			nls.builtins.diagnostics.clang_check,
-			nls.builtins.diagnostics.ruff,
+			nls.builtins.diagnostics.ruff, -- python
 		}
 	end,
 
