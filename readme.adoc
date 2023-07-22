@@ -41,6 +41,7 @@ image::https://github.com/rtgiskard/lazyNvim/assets/34635040/51879053-e56c-434a-
 * treesitter parser: managed by `nvim-treesitter`, installed with `:TSUpdate`
 * lsp server: managed by `mason`, installed with `:MasonUpdate`
 * formatter, linter: used by `null-ls`, generally installed with system package manager
+* dap: external tools installed manually
 
 
 == 🚀 Getting Started
