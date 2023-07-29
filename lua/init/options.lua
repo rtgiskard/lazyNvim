@@ -92,7 +92,7 @@ M.plugins = {
 	end,
 
 	-- lsp format timeout
-	fmt_timeout_ms = 4000,
+	fmt_timeout_ms = 20000,
 }
 
 -- stylua: ignore
