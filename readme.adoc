@@ -40,8 +40,8 @@ image::https://github.com/rtgiskard/lazyNvim/assets/34635040/51879053-e56c-434a-
 - external tools (configured in `lua/init/options.lua:M.plugins`)
 * treesitter parser: managed by `nvim-treesitter`, installed with `:TSUpdate`
 * lsp server: managed by `mason`, installed with `:MasonUpdate`
-* formatter, linter: used by `null-ls`, generally installed with system package manager
-* dap: external tools installed manually
+* formatter, linter: used by `null-ls`, install: `mason` or manually
+* dap: external debug tools, install: `mason` or manually
 
 
 == 🚀 Getting Started
@@ -76,12 +76,14 @@ nvim
 `lua/plugins/`::
 	define all the plugins managed by `lazy.nvim` with the spec settings
 
-You may want to adjust the lsp server list in `lua/init/options.lua::plugins` as you need.
-And note that some of the settings are switchable via keymaps (like mouse, linenumber, listchars and etc.),
+As this is not meant to be an all-in-one config for all dev languages, the initial setup includes
+only a limited set that I personally use, you may want to adjust it as you need, like lsp servers
+and formatters list in `lua/init/options.lua::plugins`, which should be enough.
+
+Some of the settings are switchable via keymaps (like mouse, linenumber, listchars and etc.),
 of course you can define more with the handlers held in `lua/init/utils.lua`.
 
-And thanks to https://github.com/LazyVim/LazyVim[LazyVim], the https://www.lazyvim.org/[lazyVim's doc]
-can also be a good reference.
+And you may also find some references from https://www.lazyvim.org/[lazyVim's doc].
 
 
 == ✔️ Todo
