@@ -34,8 +34,12 @@ return {
 		},
 	},
 
-	-- snippets: not configured yet
-	{ 'L3MON4D3/LuaSnip', lazy = true },
+	-- snippets
+	{
+		'L3MON4D3/LuaSnip',
+		event = 'InsertEnter',
+		build = 'make install_jsregexp',
+	},
 
 	-- comments
 	{

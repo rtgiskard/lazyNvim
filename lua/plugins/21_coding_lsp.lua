@@ -72,16 +72,12 @@ return {
 			end
 		end,
 		dependencies = {
-			-- load for lsp server setup
+			-- lsp server setup
 			'williamboman/mason.nvim',
 			'williamboman/mason-lspconfig.nvim',
 
-			{
-				'hrsh7th/cmp-nvim-lsp',
-				cond = function()
-					return util.has('nvim-cmp')
-				end,
-			},
+			-- lsp completion
+			'hrsh7th/cmp-nvim-lsp',
 		},
 	},
 
