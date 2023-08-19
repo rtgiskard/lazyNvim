@@ -13,21 +13,13 @@ This is my personal neovim config inspired by https://github.com/LazyVim/LazyVim
 
 == 🖼️ Effects
 
-- dashboard
-+
-image::https://github.com/rtgiskard/lazyNvim/assets/34635040/7ce5b2f5-4ebb-48e4-9737-07ebaf6d1abb[align="center", width=50%]
-
-- coding
-+
-image::https://github.com/rtgiskard/lazyNvim/assets/34635040/2794ba46-f23f-4d35-8782-372f36362ea0[align="center"]
-
-- plugins
-+
-image::https://github.com/rtgiskard/lazyNvim/assets/34635040/5f8be720-5db7-4e93-baf0-c08dfb15f1a0[align="center"]
-
-- float terminal
-+
-image::https://github.com/rtgiskard/lazyNvim/assets/34635040/51879053-e56c-434a-8f20-b22c635e31b5[align="center"]
+[cols="1,1,1,1"]
+|===
+| image:https://github.com/rtgiskard/lazyNvim/assets/34635040/3d30cef3-b9b7-4117-aee1-b0a5908a1323[dashboard]
+| image:https://github.com/rtgiskard/lazyNvim/assets/34635040/01766bbc-5b2e-4e50-b2f5-877806fe8afa[coding]
+| image:https://github.com/rtgiskard/lazyNvim/assets/34635040/8f5715bd-28a7-489e-aa20-a6992cadce52[plugins]
+| image:https://github.com/rtgiskard/lazyNvim/assets/34635040/c74664bc-b90a-445b-9b4a-c7b29019d46d[float terminal]
+|===
 
 
 == ⚡️ Requirements
@@ -84,6 +76,24 @@ Some of the settings are switchable via keymaps (like mouse, linenumber, listcha
 of course you can define more with the handlers held in `lua/init/utils.lua`.
 
 And you may also find some references from https://www.lazyvim.org/[lazyVim's doc].
+
+
+== 🗒️ Plugin Notes
+
+- `treesitter`: syntax parser, provide better highlighting
+- `lsp`: language server, dev tools for coding
+- `dap`: debug adapter
+
+- related utils:
+. `mason`: help to install lsp/dap/linter/formatter tools
+. `lspconfig`: configurations for lsp servers
+
+- ui enhancement:
+. telescope: the extendable fuzzy finder
+. notify: popup notification
+. themes and misc
+
+- other tools: complete, indent, trim, pairs, and etc.
 
 
 == ✔️ Todo
