@@ -39,15 +39,6 @@ M.notify = {
 	},
 }
 
-M.bufferline = {
-	{ '<leader>bp', '<Cmd>BufferLineTogglePin<CR>', desc = 'Toggle pin' },
-	{
-		'<leader>bP',
-		'<Cmd>BufferLineGroupClose ungrouped<CR>',
-		desc = 'Delete non-pinned buffers',
-	},
-}
-
 M.telescope = {
 	{ '<leader>ff', '<cmd>Telescope find_files<cr>', desc = 'TL file' },
 	{ '<leader>fg', '<cmd>Telescope live_grep<cr>', desc = 'TL grep' },
