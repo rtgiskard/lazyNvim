@@ -20,7 +20,7 @@ M.opt_o = {
 	modelines = 2,
 
 	list = true,
-	listchars = 'tab:»·,nbsp:+,trail:·,extends:→,precedes:←',
+	listchars = 'tab:▸·,nbsp:+,trail:·,extends:→,precedes:←',
 
 	foldmethod = 'expr',
 	foldexpr = 'nvim_treesitter#foldexpr()',
