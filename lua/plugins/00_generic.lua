@@ -65,7 +65,10 @@ return {
 		event = { 'BufReadPost', 'BufNewFile' },
 		main = 'ibl',
 		opts = {
-			indent = { char = '|' },
+			indent = {
+				char = '│',
+				tab_char = '│',
+			},
 			scope = { enabled = false },
 			-- stylua: ignore
 			exclude = {
