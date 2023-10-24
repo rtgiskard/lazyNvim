@@ -41,13 +41,13 @@ return {
 			end
 
 			-- get the cmp capabilities with cmp_nvim_lsp
-			local have_cmp, cmp_lsp = pcall(require, 'cmp_nvim_lsp')
-			local capabilities = {}
-			if have_cmp then
-				capabilities = cmp_lsp.default_capabilities(
-					vim.lsp.protocol.make_client_capabilities()
-				)
-			end
+			local has_cmp, cmp_lsp = pcall(require, 'cmp_nvim_lsp')
+			local capabilities = vim.tbl_deep_extend(
+				'force',
+				{},
+				vim.lsp.protocol.make_client_capabilities(),
+				has_cmp and cmp_lsp.default_capabilities() or {}
+			)
 
 			-- define setup handler for mason-lspconfig
 			local function s_setup(server)
