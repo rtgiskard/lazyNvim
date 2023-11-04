@@ -29,7 +29,42 @@ return {
 
 			-- setup adapter and config for specific language
 			local dap = require('dap')
-			dap.adapters.python = {
+
+			-- dap: c/cpp/rust
+			-- req: gdb 14.0+
+			dap.adapters.gdb = {
+				type = 'executable',
+				command = 'gdb',
+				args = { '-i', 'dap' },
+			}
+			-- req: lldb
+			dap.adapters.lldb = {
+				type = 'executable',
+				command = 'lldb-vscode',
+				name = { 'lldb' },
+			}
+			dap.configurations.c = {
+				{
+					name = 'Launch',
+					type = 'lldb',
+					request = 'launch',
+					program = function()
+						return vim.fn.input(
+							'Path to executable: ',
+							vim.fn.getcwd() .. '/',
+							'file'
+						)
+					end,
+					stopOnEntry = false,
+					cwd = '${workspaceFolder}',
+					args = {},
+				},
+			}
+			dap.configurations.cpp = dap.configurations.c
+			dap.configurations.rust = dap.configurations.c
+
+			-- dap: python
+			dap.adapters.debugpy = {
 				type = 'executable',
 				command = '/usr/bin/python',
 				args = { '-m', 'debugpy.adapter' },
@@ -37,13 +72,19 @@ return {
 			dap.configurations.python = {
 				{
 					-- required by nvim-dap
-					type = 'python',
+					type = 'debugpy',
 					request = 'launch',
 					name = 'Launch file',
 
 					-- options below are for debugpy
-					program = '${file}',
-					pythonPath = '/usr/bin/python',
+					pythonPath = 'python',
+					program = function()
+						return vim.fn.input(
+							'Path to executable: ',
+							vim.fn.getcwd() .. '/',
+							'file'
+						)
+					end,
 				},
 			}
 		end,
