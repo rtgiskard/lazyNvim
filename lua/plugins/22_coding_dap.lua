@@ -48,6 +48,7 @@ return {
 					name = 'Launch',
 					type = 'lldb',
 					request = 'launch',
+
 					program = function()
 						return vim.fn.input(
 							'Path to executable: ',
@@ -55,9 +56,12 @@ return {
 							'file'
 						)
 					end,
-					stopOnEntry = false,
+					args = function()
+						local args = vim.fn.input('Args: ')
+						return vim.split(args, ' ')
+					end,
 					cwd = '${workspaceFolder}',
-					args = {},
+					stopOnEntry = false,
 				},
 			}
 			dap.configurations.cpp = dap.configurations.c
@@ -72,9 +76,9 @@ return {
 			dap.configurations.python = {
 				{
 					-- required by nvim-dap
+					name = 'Launch',
 					type = 'debugpy',
 					request = 'launch',
-					name = 'Launch file',
 
 					-- options below are for debugpy
 					pythonPath = 'python',
@@ -85,6 +89,11 @@ return {
 							'file'
 						)
 					end,
+					args = function()
+						local args = vim.fn.input('Args: ')
+						return vim.split(args, ' ')
+					end,
+					cwd = '${workspaceFolder}',
 				},
 			}
 		end,
