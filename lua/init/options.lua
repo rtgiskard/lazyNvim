@@ -73,26 +73,51 @@ M.plugins = {
 		'lua_ls',
 		'vala_ls',
 		'rust_analyzer',
+		'biome', -- ft: json, javascript, typescript
 	},
 
-	-- null-ls sources: formatter and linter
-	nls_sources = function(nls)
-		return {
-			-- formatter
-			nls.builtins.formatting.rustfmt, -- rust
-			nls.builtins.formatting.yapf, -- python
-			nls.builtins.formatting.stylua, -- lua
-			nls.builtins.formatting.shfmt, -- bash script
-			nls.builtins.formatting.xq, -- xml
-			nls.builtins.formatting.prettier, -- js, css, json, html, md, yaml, ..
+	-- linter: nvim-lint
+	linter_opts = {
+		linters_by_ft = {
+			python = { 'ruff' },
+		},
+		linters = {},
+	},
 
-			-- linter
-			nls.builtins.diagnostics.ruff, -- python
-		}
-	end,
+	-- formatter: conform
+	conform_opts = {
+		-- format only the listed ft
+		formatters_by_ft = {
+			rust = { 'rustfmt' },
+			python = { 'yapf' },
+			lua = { 'stylua' },
+			sh = { 'shfmt' },
 
-	-- lsp format timeout
-	fmt_timeout_ms = 20000,
+			vala = { 'uncrustify' },
+
+			-- Use a sub-list to run only the first available formatter
+			css = { { 'prettierd', 'prettier' } },
+			scss = { { 'prettierd', 'prettier' } },
+		},
+		-- customize formatters
+		formatters = {
+			uncrustify = {
+				env = { UNCRUSTIFY_CONFIG = '.uncrustify.cfg' },
+			},
+		},
+		notify_on_error = true,
+		-- format_on_save = { timeout_ms = 500, lsp_fallback = true },
+	},
+
+	-- conform/lsp.buf fornat() args
+	format_args = {
+		async = true, -- edit during format can lead to unexpected changes for lsp format
+		timeout_ms = 2000, -- ignored if async=true
+
+		-- conform only, fallback to lsp format
+		lsp_fallback = true,
+		quiet = false,
+	},
 }
 
 -- stylua: ignore

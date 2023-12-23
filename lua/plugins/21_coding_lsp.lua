@@ -114,19 +114,43 @@ return {
 		},
 	},
 
-	-- null-ls as formatter and linter
+	-- lightweight yet powerful formatter
 	{
-		'jose-elias-alvarez/null-ls.nvim',
+		'stevearc/conform.nvim',
+		lazy = true,
+		opts = option.plugins.conform_opts,
+	},
+
+	-- asynchronous linter, beyond lsp
+	{
+		'mfussenegger/nvim-lint',
 		event = { 'BufReadPre', 'BufNewFile' },
-		opts = function()
-			local nls = require('null-ls')
-			return {
-				sources = option.plugins.nls_sources(nls),
-			}
+		opts = option.plugins.linter_opts,
+		config = function(_, opts)
+			local lint = require('lint')
+
+			-- bind linters
+			lint.linters_by_ft = opts.linters_by_ft
+
+			for name, linter in pairs(opts.linters) do
+				if type(linter) == 'table' and type(lint.linters[name]) == 'table' then
+					lint.linters[name] =
+						vim.tbl_deep_extend('force', lint.linters[name], linter)
+				else
+					lint.linters[name] = linter
+				end
+			end
+
+			-- trigger linting
+			vim.api.nvim_create_autocmd(
+				{ 'BufWritePost', 'BufReadPost', 'InsertLeave', 'TextChanged' },
+				{
+					callback = function()
+						lint.try_lint()
+					end,
+				}
+			)
 		end,
-		dependencies = {
-			'nvim-lua/plenary.nvim',
-		},
 	},
 
 	-- better diagnostics list and others

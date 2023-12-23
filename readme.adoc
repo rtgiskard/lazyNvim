@@ -30,9 +30,8 @@ This is my personal neovim config inspired by https://github.com/LazyVim/LazyVim
 - a *C* compiler for `nvim-treesitter`. See https://github.com/nvim-treesitter/nvim-treesitter#requirements[here]
 
 - external tools (configured in `lua/init/options.lua:M.plugins`)
-* treesitter parser: managed by `nvim-treesitter`, installed with `:TSUpdate`
-* lsp server: managed by `mason`, installed with `:MasonUpdate`
-* formatter, linter: used by `null-ls`, install: `mason` or manually
+* treesitter parser: used by `nvim-treesitter`, install/update with `:TSUpdate`
+* lsp server, linter, formatter: managed by `mason`, install/update with `:MasonUpdate`
 * dap: external debug tools, install: `mason` or manually
 
 
@@ -81,7 +80,9 @@ And you may also find some references from https://www.lazyvim.org/[lazyVim's do
 == 🗒️ Plugin Notes
 
 - `treesitter`: syntax parser, provide better highlighting
-- `lsp`: language server, dev tools for coding
+- `lsp`: language server, provide: completion, linting, formatting, diagnostics, hover/jump ..
+- `linter`: common checks and provide hints, run with or without `lsp`
+- `formatter`: format code, takes priority over `lsp` format
 - `dap`: debug adapter
 
 - related utils:

@@ -55,31 +55,15 @@ function M.on_attach(on_attach)
 	})
 end
 
----@param plugin string
-function M.has(plugin)
-	return require('lazy.core.config').plugins[plugin] ~= nil
-end
-
 function M.format()
-	local buf = vim.api.nvim_get_current_buf()
-	local ft = vim.bo[buf].filetype
+	local options = require('init.options')
 
-	-- stylua: ignore
-	local have_nls = #require('null-ls.sources').get_available(ft, 'NULL_LS_FORMATTING') > 0
-
-	-- prefer null-ls formatter
-	local fmt_filter = function(client)
-		if have_nls then
-			return client.name == 'null-ls'
-		end
-		return client.name ~= 'null-ls'
+	local have_fmt, fmt_util = pcall(require, 'conform')
+	if have_fmt then
+		fmt_util.format(options.plugins.format_args)
+	else
+		vim.lsp.buf.format(options.plugins.format_args)
 	end
-
-	vim.lsp.buf.format({
-		bufnr = buf,
-		filter = fmt_filter,
-		timeout_ms = require('init.options').plugins.fmt_timeout_ms,
-	})
 end
 
 return M
