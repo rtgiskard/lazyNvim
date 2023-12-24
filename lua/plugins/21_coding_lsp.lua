@@ -1,4 +1,3 @@
-local util = require('init.utils')
 local option = require('init.options')
 local keymap = require('init.keymaps')
 
@@ -78,6 +77,9 @@ return {
 
 			-- lsp completion
 			'hrsh7th/cmp-nvim-lsp',
+
+			-- load navic before LspAttach (required by navic lsp.auto_attach)
+			'SmiteshP/nvim-navic',
 		},
 	},
 
@@ -166,14 +168,6 @@ return {
 	{
 		'SmiteshP/nvim-navic',
 		lazy = true,
-		init = function()
-			-- vim.g.navic_silence = true
-			util.on_attach(function(client, buffer)
-				if client.server_capabilities.documentSymbolProvider then
-					require('nvim-navic').attach(client, buffer)
-				end
-			end)
-		end,
 		opts = {
 			highlight = true,
 			depth_limit = 7,
@@ -181,9 +175,6 @@ return {
 				auto_attach = true,
 				preference = { 'clangd', 'pyright' },
 			},
-		},
-		dependencies = {
-			'neovim/nvim-lspconfig',
 		},
 	},
 }
