@@ -41,12 +41,12 @@ return {
 			end
 
 			-- get the cmp capabilities with cmp_nvim_lsp
-			local has_cmp, cmp_lsp = pcall(require, 'cmp_nvim_lsp')
+			local have_cmp, cmp_lsp = pcall(require, 'cmp_nvim_lsp')
 			local capabilities = vim.tbl_deep_extend(
 				'force',
 				{},
 				vim.lsp.protocol.make_client_capabilities(),
-				has_cmp and cmp_lsp.default_capabilities() or {}
+				have_cmp and cmp_lsp.default_capabilities() or {}
 			)
 
 			-- define setup handler for mason-lspconfig
@@ -130,8 +130,6 @@ return {
 			local lint = require('lint')
 
 			-- bind linters
-			lint.linters_by_ft = opts.linters_by_ft
-
 			for name, linter in pairs(opts.linters) do
 				if type(linter) == 'table' and type(lint.linters[name]) == 'table' then
 					lint.linters[name] =
@@ -141,15 +139,14 @@ return {
 				end
 			end
 
-			-- trigger linting
-			vim.api.nvim_create_autocmd(
-				{ 'BufWritePost', 'BufReadPost', 'InsertLeave', 'TextChanged' },
-				{
-					callback = function()
-						lint.try_lint()
-					end,
-				}
-			)
+			lint.linters_by_ft = opts.linters_by_ft
+
+			-- trigger lint
+			vim.api.nvim_create_autocmd(opts.trigger_on_events, {
+				callback = function()
+					lint.try_lint()
+				end,
+			})
 		end,
 	},
 

@@ -78,33 +78,45 @@ M.plugins = {
 
 	-- linter: nvim-lint
 	linter_opts = {
+		-- lint only the listed ft
 		linters_by_ft = {
 			python = { 'ruff' },
 		},
+
+		-- customize linters
 		linters = {},
+
+		-- some linters may rely on files to be saved
+		trigger_on_events = {
+			'BufWritePost',
+			'BufReadPost',
+			'InsertLeave',
+			'TextChanged',
+		},
 	},
 
 	-- formatter: conform
 	conform_opts = {
 		-- format only the listed ft
 		formatters_by_ft = {
-			rust = { 'rustfmt' },
 			python = { 'yapf' },
+			rust = { 'rustfmt' },
+			vala = { 'uncrustify' },
 			lua = { 'stylua' },
 			sh = { 'shfmt' },
-
-			vala = { 'uncrustify' },
 
 			-- Use a sub-list to run only the first available formatter
 			css = { { 'prettierd', 'prettier' } },
 			scss = { { 'prettierd', 'prettier' } },
 		},
+
 		-- customize formatters
 		formatters = {
 			uncrustify = {
 				env = { UNCRUSTIFY_CONFIG = '.uncrustify.cfg' },
 			},
 		},
+
 		notify_on_error = true,
 		-- format_on_save = { timeout_ms = 500, lsp_fallback = true },
 	},
