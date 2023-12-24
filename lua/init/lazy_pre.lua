@@ -49,7 +49,7 @@ function M.load_lazy()
 		},
 		performance = {
 			rtp = {
-				paths = { '/usr/share/vim/vimfiles' },
+				-- paths = { '/usr/share/vim/vimfiles' },
 				disabled_plugins = {
 					'gzip',
 					'matchit',
