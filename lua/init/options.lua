@@ -121,14 +121,14 @@ M.plugins = {
 		-- format_on_save = { timeout_ms = 500, lsp_fallback = true },
 	},
 
-	-- conform/lsp.buf fornat() args
+	-- conform/lsp.buf format() args
 	format_args = {
 		async = true, -- edit during format can lead to unexpected changes for lsp format
 		timeout_ms = 2000, -- ignored if async=true
 
-		-- conform only, fallback to lsp format
+		-- conform only
 		lsp_fallback = true,
-		quiet = false,
+		quiet = true,
 	},
 }
 

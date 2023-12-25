@@ -45,13 +45,38 @@ end
 -- utils for plugins
 
 function M.format()
-	local options = require('init.options')
+	local format_args = require('init.options').plugins.format_args
 
 	local have_fmt, fmt_util = pcall(require, 'conform')
 	if have_fmt then
-		fmt_util.format(options.plugins.format_args)
+		-- get current formatter names
+		local formatters = fmt_util.list_formatters()
+		local fmt_names = {}
+
+		if not vim.tbl_isempty(formatters) then
+			fmt_names = vim.tbl_map(function(f)
+				return f.name
+			end, formatters)
+		elseif fmt_util.will_fallback_lsp(format_args) then
+			fmt_names = { 'lsp' }
+		else
+			return
+		end
+
+		local fmt_title = 'conform: ' .. table.concat(fmt_names, '/')
+		local fmt_msg = fmt_title .. ' format ..'
+
+		-- TODO: only show 2 echo msg before must enter command mode and exit??
+		vim.api.nvim_echo({ { fmt_msg, 'Special' } }, false, {})
+
+		-- format with auto close popup, and notify if err
+		fmt_util.format(format_args, function(err)
+			if err then
+				vim.notify(err, vim.log.levels.WARN, { title = fmt_title })
+			end
+		end)
 	else
-		vim.lsp.buf.format(options.plugins.format_args)
+		vim.lsp.buf.format(format_args)
 	end
 end
 

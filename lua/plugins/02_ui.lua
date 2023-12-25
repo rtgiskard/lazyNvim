@@ -1,7 +1,7 @@
 local keymap = require('init.keymaps')
 
 return {
-	-- Better `vim.notify()`
+	-- better `vim.notify()`
 	{
 		'rcarriga/nvim-notify',
 		keys = keymap.notify,
@@ -17,7 +17,7 @@ return {
 		},
 	},
 
-	-- noicer ui
+	-- noice ui, customize views
 	{
 		'folke/noice.nvim',
 		event = 'VeryLazy',
@@ -35,6 +35,16 @@ return {
 				override = {
 					['vim.lsp.util.convert_input_to_markdown_lines'] = true,
 					['vim.lsp.util.stylize_markdown'] = true,
+				},
+			},
+			routes = {
+				{ -- show format msg in the mini view
+					filter = {
+						event = 'msg_show',
+						kind = 'echo',
+						find = 'conform: ',
+					},
+					view = 'mini',
 				},
 			},
 		},
