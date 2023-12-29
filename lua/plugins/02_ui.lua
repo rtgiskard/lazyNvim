@@ -17,6 +17,20 @@ return {
 		},
 	},
 
+	-- progress notifications
+	{
+		'j-hui/fidget.nvim',
+		lazy = true,
+		opts = {
+			progress = {
+				display = {
+					render_limit = 20,
+					done_ttl = 2,
+				},
+			},
+		},
+	},
+
 	-- noice ui, customize views
 	{
 		'folke/noice.nvim',
@@ -35,16 +49,6 @@ return {
 				override = {
 					['vim.lsp.util.convert_input_to_markdown_lines'] = true,
 					['vim.lsp.util.stylize_markdown'] = true,
-				},
-			},
-			routes = {
-				{ -- show format msg in the mini view
-					filter = {
-						event = 'msg_show',
-						kind = 'echo',
-						find = 'conform: ',
-					},
-					view = 'mini',
 				},
 			},
 		},

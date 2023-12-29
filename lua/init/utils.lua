@@ -44,6 +44,15 @@ end
 
 -- utils for plugins
 
+function M.init_msg_progress(title, msg)
+	return require('fidget.progress').handle.create({
+		title = title,
+		message = msg,
+		lsp_client = { name = '>>' }, -- the fake lsp client name
+		percentage = nil, -- skip percentage field
+	})
+end
+
 function M.format()
 	local format_args = require('init.options').plugins.format_args
 
@@ -63,16 +72,14 @@ function M.format()
 			return
 		end
 
-		local fmt_title = 'conform: ' .. table.concat(fmt_names, '/')
-		local fmt_msg = fmt_title .. ' format ..'
-
-		-- TODO: only show 2 echo msg before must enter command mode and exit??
-		vim.api.nvim_echo({ { fmt_msg, 'Special' } }, false, {})
+		local fmt_info = 'fmt: ' .. table.concat(fmt_names, '/')
+		local msg_handle = M.init_msg_progress(fmt_info)
 
 		-- format with auto close popup, and notify if err
 		fmt_util.format(format_args, function(err)
+			msg_handle:finish()
 			if err then
-				vim.notify(err, vim.log.levels.WARN, { title = fmt_title })
+				vim.notify(err, vim.log.levels.WARN, { title = fmt_info })
 			end
 		end)
 	else
