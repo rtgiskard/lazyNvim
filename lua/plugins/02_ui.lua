@@ -17,20 +17,6 @@ return {
 		},
 	},
 
-	-- progress notifications
-	{
-		'j-hui/fidget.nvim',
-		lazy = true,
-		opts = {
-			progress = {
-				display = {
-					render_limit = 20,
-					done_ttl = 2,
-				},
-			},
-		},
-	},
-
 	-- noice ui, customize views
 	{
 		'folke/noice.nvim',

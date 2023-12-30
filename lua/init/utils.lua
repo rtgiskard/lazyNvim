@@ -50,17 +50,6 @@ function M.notify_mini(msg, level)
 	vim.notify(msg, level or vim.log.levels.INFO, { render = 'minimal' })
 end
 
----@param title string
----@param msg? string
-function M.init_msg_progress(title, msg)
-	return require('fidget.progress').handle.create({
-		title = title,
-		message = msg,
-		lsp_client = { name = '>>' }, -- the fake lsp client name
-		percentage = nil, -- skip percentage field
-	})
-end
-
 function M.format()
 	local format_args = require('init.options').plugins.format_args
 
@@ -80,12 +69,15 @@ function M.format()
 			return
 		end
 
-		local fmt_info = 'fmt: ' .. table.concat(fmt_names, '/')
-		local msg_handle = M.init_msg_progress(fmt_info)
+		-- notify with noice progress api
+		local noice_progress = require('noice.lsp.progress')
 
-		-- format with auto close popup, and notify if err
+		local fmt_info = 'fmt: ' .. table.concat(fmt_names, '/')
+		local msg_id = noice_progress.progress_msg(fmt_info)
+
+		-- format with callback, and notify on err
 		fmt_util.format(format_args, function(err)
-			msg_handle:finish()
+			noice_progress.progress_msg_end(msg_id)
 			if err then
 				vim.notify(err, vim.log.levels.WARN, { title = fmt_info })
 			end
