@@ -3,21 +3,21 @@ local M = {}
 function M.toggle_mouse()
 	if vim.o.mouse == '' then
 		vim.o.mouse = 'nvi'
-		vim.notify('󰍽 mouse: ' .. vim.o.mouse, vim.log.levels.INFO)
+		M.notify_mini('󰍽 mouse: ' .. vim.o.mouse)
 	else
 		vim.o.mouse = ''
-		vim.notify('󰍾 mouse: ' .. vim.o.mouse, vim.log.levels.INFO)
+		M.notify_mini('󰍾 mouse: -')
 	end
 end
 
 function M.toggle_number()
 	vim.o.number = not vim.o.number
-	vim.notify(' line number: ' .. tostring(vim.o.number), vim.log.levels.INFO)
+	M.notify_mini(' line number: ' .. tostring(vim.o.number))
 end
 
 function M.toggle_listchars()
 	vim.o.list = not vim.o.list
-	vim.notify(' list chars: ' .. tostring(vim.o.list), vim.log.levels.INFO)
+	M.notify_mini(' list chars: ' .. tostring(vim.o.list))
 end
 
 function M.toggle_diagnostic()
@@ -27,7 +27,7 @@ function M.toggle_diagnostic()
 	else
 		vim.diagnostic.disable()
 	end
-	vim.notify('󰨮 diagnostic: ' .. tostring(state), vim.log.levels.INFO)
+	M.notify_mini('󰨮 diagnostic: ' .. tostring(state))
 end
 
 function M.float_term(cmd, opts)
@@ -44,6 +44,14 @@ end
 
 -- utils for plugins
 
+---@param msg string
+---@param level? integer
+function M.notify_mini(msg, level)
+	vim.notify(msg, level or vim.log.levels.INFO, { render = 'minimal' })
+end
+
+---@param title string
+---@param msg? string
 function M.init_msg_progress(title, msg)
 	return require('fidget.progress').handle.create({
 		title = title,
