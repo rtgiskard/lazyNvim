@@ -19,7 +19,7 @@ return {
 
 	-- noice ui, customize views
 	{
-		'folke/noice.nvim',
+		'rtgiskard/noice.nvim',
 		event = 'VeryLazy',
 		opts = {
 			cmdline = {
