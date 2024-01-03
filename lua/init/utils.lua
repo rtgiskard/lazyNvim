@@ -53,6 +53,9 @@ end
 function M.format()
 	local format_args = require('init.options').plugins.format_args
 
+	-- in case the original args get modified
+	format_args = vim.deepcopy(format_args)
+
 	local have_fmt, fmt_util = pcall(require, 'conform')
 	if have_fmt then
 		-- get current formatter names
