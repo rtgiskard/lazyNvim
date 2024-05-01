@@ -110,11 +110,12 @@ M.todo_comments = {
 M.mini_comment = {
 	-- Use `''` (empty string) to disable one.
 
-	comment = 'gc', -- Toggle comment for both Normal and Visual modes
-	comment_line = 'gcc', -- Toggle comment on current line
+	comment = '', -- Toggle comment for both Normal and Visual modes
+	comment_line = 'cc', -- Toggle comment on current line
+	comment_visual = 'cc', -- Toggle comment on visual selection
 
 	-- Define 'comment' textobject (like `dgc` - delete whole comment block)
-	textobject = 'gc',
+	textobject = '',
 }
 
 -- nvim-cmp: internal map in opts
