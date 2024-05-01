@@ -97,8 +97,8 @@ M.dap = {
 
 -- stylua: ignore
 M.dapui = {
-    { '<leader>du', function() require('dapui').toggle() end, desc = 'Dap UI' },
-    { '<leader>de', function() require('dapui').eval() end, desc = 'Eval Hover' },
+    { '<leader>du', function() require('dapui').toggle() end, desc = 'DapUI toggle' },
+    { '<leader>de', function() require('dapui').eval() end, desc = 'DapUI eval' },
 }
 
 M.todo_comments = {
