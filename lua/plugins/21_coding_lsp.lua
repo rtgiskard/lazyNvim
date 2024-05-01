@@ -103,7 +103,7 @@ return {
 		cmd = 'Mason',
 		build = ':MasonUpdate',
 		opts = { -- required for :Mason
-			log_level = vim.log.levels.INFO,
+			log_level = vim.log.levels.OFF,
 			max_concurrent_installers = 4,
 			ui = {
 				-- disable check on :Mason window
@@ -120,14 +120,29 @@ return {
 	{
 		'stevearc/conform.nvim',
 		lazy = true,
-		opts = option.plugins.conform_opts,
+		opts = function()
+			return vim.tbl_deep_extend('keep', option.plugins.conform_opts, {
+				notify_on_error = true,
+				log_level = vim.log.levels.OFF,
+			})
+		end,
 	},
 
 	-- asynchronous linter, beyond lsp
 	{
 		'mfussenegger/nvim-lint',
 		event = { 'BufReadPre', 'BufNewFile' },
-		opts = option.plugins.linter_opts,
+		opts = function()
+			return vim.tbl_deep_extend('keep', option.plugins.linter_opts, {
+				-- some linters may rely on files to be saved
+				trigger_on_events = {
+					'BufWritePost',
+					'BufReadPost',
+					'InsertLeave',
+					'TextChanged',
+				},
+			})
+		end,
 		config = function(_, opts)
 			local lint = require('lint')
 

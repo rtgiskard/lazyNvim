@@ -85,14 +85,6 @@ M.plugins = {
 
 		-- customize linters
 		linters = {},
-
-		-- some linters may rely on files to be saved
-		trigger_on_events = {
-			'BufWritePost',
-			'BufReadPost',
-			'InsertLeave',
-			'TextChanged',
-		},
 	},
 
 	-- formatter: conform
@@ -117,7 +109,6 @@ M.plugins = {
 			},
 		},
 
-		notify_on_error = true,
 		-- format_on_save = { timeout_ms = 500, lsp_fallback = true },
 	},
 
@@ -136,6 +127,9 @@ M.plugins = {
 function M.load_options()
 	for k, v in pairs(M.opt_o) do vim.o[k] = v end
 	for k, v in pairs(M.opt_g) do vim.g[k] = v end
+
+	-- disable lsp log, which can be large
+	vim.lsp.set_log_level('off')
 end
 
 return M
