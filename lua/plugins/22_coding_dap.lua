@@ -104,6 +104,7 @@ return {
 		'rcarriga/nvim-dap-ui',
 		lazy = true,
 		keys = keymap.dapui,
+		opts = { log_level = vim.log.levels.OFF },
 		config = function(_, opts)
 			local dap, dapui = require('dap'), require('dapui')
 			dapui.setup(opts)
