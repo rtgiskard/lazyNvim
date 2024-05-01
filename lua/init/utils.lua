@@ -44,6 +44,11 @@ end
 
 -- utils for plugins
 
+---@param plugin string
+function M.has(plugin)
+	return require('lazy.core.config').spec.plugins[plugin] ~= nil
+end
+
 ---@param msg string
 ---@param level? integer
 function M.notify_mini(msg, level)
