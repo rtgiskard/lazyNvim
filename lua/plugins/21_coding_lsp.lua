@@ -24,6 +24,12 @@ return {
 						},
 					},
 				},
+				biome = { -- https://biomejs.dev/guides/integrate-in-editor/
+					single_file_support = true,
+				},
+				ast_grep = { -- https://ast-grep.github.io/guide/tools/editors.html
+					filetypes = { 'html', 'css' },
+				},
 			},
 		},
 		config = function(_, opts)
