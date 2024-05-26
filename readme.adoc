@@ -15,10 +15,10 @@ This is my personal neovim config inspired by https://github.com/LazyVim/LazyVim
 
 [cols="1,1,1,1"]
 |===
-| image:https://github.com/rtgiskard/lazyNvim/assets/34635040/3d30cef3-b9b7-4117-aee1-b0a5908a1323[dashboard]
-| image:https://github.com/rtgiskard/lazyNvim/assets/34635040/01766bbc-5b2e-4e50-b2f5-877806fe8afa[coding]
-| image:https://github.com/rtgiskard/lazyNvim/assets/34635040/8f5715bd-28a7-489e-aa20-a6992cadce52[plugins]
-| image:https://github.com/rtgiskard/lazyNvim/assets/34635040/c74664bc-b90a-445b-9b4a-c7b29019d46d[float terminal]
+| image:https://github.com/rtgiskard/lazyNvim/assets/34635040/c5946b1c-b86b-47b9-994f-0cbd0a3c2f2d[dashboard]
+| image:https://github.com/rtgiskard/lazyNvim/assets/34635040/3b877e01-f7c6-4262-b2ba-3a055c3a4db9[coding]
+| image:https://github.com/rtgiskard/lazyNvim/assets/34635040/6b68b652-17a3-4e65-88ee-40b292ec030f[plugins]
+| image:https://github.com/rtgiskard/lazyNvim/assets/34635040/ad107377-2233-48e9-9bd1-9f2c0c8a3f43[float terminal]
 |===
 
 
@@ -99,7 +99,6 @@ And you may also find some references from https://www.lazyvim.org/[lazyVim's do
 
 == ✔️ Todo
 
-- [ ] better DAP integration
 - [ ] any recommendation?
 
 
