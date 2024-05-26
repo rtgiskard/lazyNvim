@@ -50,16 +50,10 @@ return {
 		event = 'VimEnter',
 		opts = function()
 			local dashboard = require('alpha.themes.dashboard')
-			local logo = [[
-				██╗      █████╗ ███████╗██╗   ██╗          Z
-				██║     ██╔══██╗╚══███╔╝╚██╗ ██╔╝      Z
-				██║     ███████║  ███╔╝  ╚████╔╝    z
-				██║     ██╔══██║ ███╔╝    ╚██╔╝   z
-				███████╗██║  ██║███████╗   ██║
-				╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝
-				]]
 
-			dashboard.section.header.val = vim.split(logo, '\n')
+			local name = require('init.options').plugins.header
+			dashboard.section.header.val = require('init.headers').getHeader(name)
+
 			-- stylua: ignore
 			dashboard.section.buttons.val = {
 				dashboard.button('n', '  New file', ':ene <BAR> startinsert <CR>'),

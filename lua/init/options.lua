@@ -57,6 +57,9 @@ M.plugins = {
 	-- colorscheme plugin to load
 	colorscheme = 'tokyonight',
 
+	-- header for dashboard
+	header = nil,
+
 	-- stylua: ignore
 	ts_parsers = {
 		'c', 'cpp', 'go', 'python', 'lua', 'vala', 'bash',
