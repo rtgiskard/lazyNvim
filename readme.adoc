@@ -1,5 +1,8 @@
 = 📜 About
 
+image:https://img.shields.io/badge/license-GPLv3-green.svg?style=flat[license]
+image:https://img.shields.io/badge/Kofi-F16061.svg?logo=ko-fi&logoColor=white[kofi]
+
 This is my personal neovim config inspired by https://github.com/LazyVim/LazyVim[LazyVim], with KISS in mind.
 
 
@@ -13,9 +16,9 @@ This is my personal neovim config inspired by https://github.com/LazyVim/LazyVim
 
 == 🖼️ Effects
 
-[cols="1,1,1,1"]
+[cols="1,1,1", grid=none, frame=none]
 |===
-| image:https://github.com/rtgiskard/lazyNvim/assets/34635040/c5946b1c-b86b-47b9-994f-0cbd0a3c2f2d[dashboard]
+3+| image:https://github.com/rtgiskard/lazyNvim/assets/34635040/c5946b1c-b86b-47b9-994f-0cbd0a3c2f2d[dashboard]
 | image:https://github.com/rtgiskard/lazyNvim/assets/34635040/3b877e01-f7c6-4262-b2ba-3a055c3a4db9[coding]
 | image:https://github.com/rtgiskard/lazyNvim/assets/34635040/6b68b652-17a3-4e65-88ee-40b292ec030f[plugins]
 | image:https://github.com/rtgiskard/lazyNvim/assets/34635040/ad107377-2233-48e9-9bd1-9f2c0c8a3f43[float terminal]
@@ -95,11 +98,6 @@ And you may also find some references from https://www.lazyvim.org/[lazyVim's do
 . themes and misc
 
 - other tools: complete, indent, trim, pairs, and etc.
-
-
-== ✔️ Todo
-
-- [ ] any recommendation?
 
 
 == 🧾 License
