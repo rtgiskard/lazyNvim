@@ -100,6 +100,8 @@ M.plugins = {
 			lua = { 'stylua' },
 			sh = { 'shfmt' },
 
+			d2 = { 'd2' },
+
 			-- TODO: with nvim 0.10, lsp dynamic capabilities should be ready
 			json = { 'biome' },
 

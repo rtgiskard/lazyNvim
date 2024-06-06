@@ -56,4 +56,9 @@ return {
 		keys = keymap.todo_comments,
 		config = true,
 	},
+
+	-- d2 diagram
+	{
+		'terrastruct/d2-vim',
+	},
 }
