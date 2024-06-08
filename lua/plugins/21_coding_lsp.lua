@@ -176,9 +176,9 @@ return {
 	-- better diagnostics list and others
 	{
 		'folke/trouble.nvim',
-		cmd = { 'TroubleToggle', 'Trouble' },
+		cmd = 'Trouble',
+		opts = {},
 		keys = keymap.trouble,
-		opts = { use_diagnostic_signs = true },
 		dependencies = {
 			'nvim-tree/nvim-web-devicons',
 			'neovim/nvim-lspconfig',

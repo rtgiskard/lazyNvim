@@ -23,7 +23,7 @@ M.basic = {
 -- keymaps for plugins
 
 M.neotree = { { '<F1>', '<cmd>Neotree toggle<cr>', desc = 'Toggle Neotree' } }
-M.trouble = { { '<F2>', '<cmd>TroubleToggle<cr>', desc = 'Toggle Trouble' } }
+M.trouble = { { '<F2>', '<cmd>Trouble<cr>', desc = 'Toggle Trouble' } }
 
 M.trim = {
 	{ '<C-1>', '<cmd>Trim<cr>', desc = 'Trim Space' },
