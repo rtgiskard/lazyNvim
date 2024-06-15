@@ -62,7 +62,7 @@ M.plugins = {
 
 	-- stylua: ignore
 	ts_parsers = {
-		'c', 'cpp', 'go', 'python', 'lua', 'vala', 'bash',
+		'c', 'cpp', 'zig', 'go', 'python', 'lua', 'vala', 'bash',
 		'meson', 'make', 'dockerfile', 'toml', 'yaml',
 		'vim', 'vimdoc', 'query', 'regex', 'latex',
 		'markdown', 'markdown_inline',
@@ -70,6 +70,7 @@ M.plugins = {
 
 	lsp_servers = {
 		'clangd',
+		'zls',
 		'gopls',
 		-- 'pylyzer',
 		'pyright',
@@ -94,6 +95,7 @@ M.plugins = {
 	conform_opts = {
 		-- format only the listed ft
 		formatters_by_ft = {
+			zig = { 'zigfmt' },
 			python = { 'yapf' },
 			rust = { 'rustfmt' },
 			vala = { 'uncrustify' },
