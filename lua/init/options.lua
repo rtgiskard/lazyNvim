@@ -104,9 +104,6 @@ M.plugins = {
 
 			d2 = { 'd2' },
 
-			-- TODO: with nvim 0.10, lsp dynamic capabilities should be ready
-			json = { 'biome' },
-
 			-- Use a sub-list to run only the first available formatter
 			css = { { 'prettierd', 'prettier' } },
 			scss = { { 'prettierd', 'prettier' } },
