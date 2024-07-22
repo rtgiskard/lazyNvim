@@ -47,9 +47,6 @@ M.telescope = {
 }
 
 -- stylua: ignore
-M.spectre = { { '<leader>sr', function() require('spectre').open() end }, desc = 'Spectre' }
-
--- stylua: ignore
 M.persistence = {
 	{ '<leader>Ss', function() require('persistence').save() end, desc = 'Save Session' },
 	{ '<leader>Sl', function() require('persistence').load() end, desc = 'Load Session' },

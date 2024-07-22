@@ -137,13 +137,6 @@ return {
 		},
 	},
 
-	-- search/replace in multiple files
-	{
-		'windwp/nvim-spectre',
-		lazy = true,
-		keys = keymap.spectre,
-	},
-
 	-- minimal and fast autopairs
 	{
 		'echasnovski/mini.pairs',
