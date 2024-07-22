@@ -116,17 +116,16 @@ M.plugins = {
 			},
 		},
 
+		default_format_opts = {
+			lsp_format = 'fallback',
+			quiet = true,
+
+			-- nvim lsp
+			async = true, -- edit during format can lead to unexpected changes for lsp format
+			timeout_ms = 2000, -- ignored if async=true
+		},
+
 		-- format_on_save = { timeout_ms = 500, lsp_fallback = true },
-	},
-
-	-- conform/lsp.buf format() args
-	format_args = {
-		async = true, -- edit during format can lead to unexpected changes for lsp format
-		timeout_ms = 2000, -- ignored if async=true
-
-		-- conform only
-		lsp_fallback = true,
-		quiet = true,
 	},
 }
 

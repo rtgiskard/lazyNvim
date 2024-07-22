@@ -56,22 +56,17 @@ function M.notify_mini(msg, level)
 end
 
 function M.format()
-	local format_args = require('init.options').plugins.format_args
-
-	-- in case the original args get modified
-	format_args = vim.deepcopy(format_args)
-
 	local have_fmt, fmt_util = pcall(require, 'conform')
 	if have_fmt then
 		-- get current formatter names
-		local formatters = fmt_util.list_formatters()
+		local formatters, use_lsp = fmt_util.list_formatters_to_run()
 		local fmt_names = {}
 
 		if not vim.tbl_isempty(formatters) then
 			fmt_names = vim.tbl_map(function(f)
 				return f.name
 			end, formatters)
-		elseif fmt_util.will_fallback_lsp(format_args) then
+		elseif use_lsp then
 			fmt_names = { 'lsp' }
 		else
 			return
@@ -84,14 +79,14 @@ function M.format()
 		local msg_id = noice_progress.progress_msg(fmt_info)
 
 		-- format with callback, and notify on err
-		fmt_util.format(format_args, function(err)
+		fmt_util.format(nil, function(err)
 			noice_progress.progress_msg_end(msg_id)
 			if err then
 				vim.notify(err, vim.log.levels.WARN, { title = fmt_info })
 			end
 		end)
 	else
-		vim.lsp.buf.format(format_args)
+		vim.lsp.buf.format()
 	end
 end
 
