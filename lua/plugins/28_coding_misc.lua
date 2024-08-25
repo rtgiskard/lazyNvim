@@ -60,5 +60,6 @@ return {
 	-- d2 diagram
 	{
 		'terrastruct/d2-vim',
+		ft = { 'd2' },
 	},
 }
