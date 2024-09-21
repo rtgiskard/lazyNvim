@@ -96,7 +96,7 @@ M.plugins = {
 		-- format only the listed ft
 		formatters_by_ft = {
 			zig = { 'zigfmt' },
-			python = { 'yapf' },
+			python = { 'ruff_format' },
 			rust = { 'rustfmt' },
 			vala = { 'uncrustify' },
 			lua = { 'stylua' },
