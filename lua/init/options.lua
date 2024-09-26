@@ -63,7 +63,8 @@ M.plugins = {
 	-- stylua: ignore
 	ts_parsers = {
 		'c', 'cpp', 'zig', 'go', 'python', 'lua', 'vala', 'bash',
-		'meson', 'make', 'dockerfile', 'toml', 'yaml',
+		'meson', 'make', 'cmake', 'dockerfile',
+		'toml', 'yaml', 'proto', 'sql', 'scheme',
 		'vim', 'vimdoc', 'query', 'regex', 'latex',
 		'markdown', 'markdown_inline',
 	},
