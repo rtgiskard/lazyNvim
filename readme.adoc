@@ -14,7 +14,7 @@ This is my personal neovim config inspired by https://github.com/LazyVim/LazyVim
 - Ready: comfortable and convenient out of the box
 
 
-== 🖼️ Effects
+== 🖼️ Preview
 
 [cols="1,1,1", grid=none, frame=none]
 |===
@@ -27,7 +27,7 @@ This is my personal neovim config inspired by https://github.com/LazyVim/LazyVim
 
 == ⚡️ Requirements
 
-- Neovim >= *0.9.2* (needs to be built with *LuaJIT*)
+- Neovim >= *0.10.0* (needs to be built with *LuaJIT*)
 - Git >= *2.19.0* (for partial clones support)
 - a https://www.nerdfonts.com/[Nerd Font] *_(optional)_*
 - a *C* compiler for `nvim-treesitter`. See https://github.com/nvim-treesitter/nvim-treesitter#requirements[here]
