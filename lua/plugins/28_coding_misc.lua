@@ -62,4 +62,10 @@ return {
 		'terrastruct/d2-vim',
 		ft = { 'd2' },
 	},
+
+	-- diff view
+	{
+		'sindrets/diffview.nvim',
+		cmd = { 'DiffviewOpen' },
+	},
 }
