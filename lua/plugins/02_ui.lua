@@ -20,6 +20,7 @@ return {
 	-- noice ui, customize views
 	{
 		'rtgiskard/noice.nvim',
+		branch = 'dev',
 		event = 'VeryLazy',
 		opts = {
 			cmdline = {
