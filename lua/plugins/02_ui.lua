@@ -45,60 +45,66 @@ return {
 		},
 	},
 
-	-- dashboard
+	-- collection of small QoL plugins
 	{
-		'goolord/alpha-nvim',
-		event = 'VimEnter',
+		'folke/snacks.nvim',
+		priority = 1000,
+		lazy = false,
 		opts = function()
-			local dashboard = require('alpha.themes.dashboard')
-
 			local name = require('init.options').plugins.header
-			dashboard.section.header.val = require('init.headers').getHeader(name)
+			local dashboard_header = require('init.headers').getHeader(name)
 
-			-- stylua: ignore
-			dashboard.section.buttons.val = {
-				dashboard.button('n', '  New file', ':ene <BAR> startinsert <CR>'),
-				dashboard.button('r', '  Recent files', ':Telescope oldfiles <CR>'),
-				dashboard.button('f', '󰥨  Find file', ':Telescope find_files <CR>'),
-				dashboard.button('g', '󰱼  Find text', ':Telescope live_grep <CR>'),
-				dashboard.button('s', '  Restore Session', [[:lua require('persistence').load() <cr>]]),
-				dashboard.button('l', '󰒲  Lazy', ':Lazy<CR>'),
-				dashboard.button('q', '  Quit', ':qa<CR>'),
+			local dashboard_keys = {
+				{
+					icon = '',
+					key = 'n',
+					desc = 'New file',
+					action = ':ene | startinsert',
+				},
+				{
+					icon = '',
+					key = 'r',
+					desc = 'Recent files',
+					action = ":lua Snacks.dashboard.pick('oldfiles')",
+				},
+				{
+					icon = '󰥨',
+					key = 'f',
+					desc = 'Find file',
+					action = ":lua Snacks.dashboard.pick('files')",
+				},
+				{
+					icon = '󰱼',
+					key = 'g',
+					desc = 'Find text',
+					action = ":lua Snacks.dashboard.pick('live_grep')",
+				},
+				-- stylua: ignore
+				{ icon = '', key = 's', desc = 'Restore session', section = 'session' },
+				{ icon = '󰒲', key = 'l', desc = 'Lazy', action = ':Lazy' },
+				{ icon = '', key = 'q', desc = 'Quit', action = ':qa' },
 			}
-			for _, button in ipairs(dashboard.section.buttons.val) do
-				button.opts.hl = 'AlphaButtons'
-				button.opts.hl_shortcut = 'AlphaShortcut'
-			end
-			dashboard.section.header.opts.hl = 'AlphaHeader'
-			dashboard.section.buttons.opts.hl = 'AlphaButtons'
-			dashboard.section.footer.opts.hl = 'AlphaFooter'
-			dashboard.opts.layout[1].val = 7
-			return dashboard
-		end,
-		config = function(_, dashboard)
-			-- close Lazy and re-open when the dashboard is ready
-			if vim.o.filetype == 'lazy' then
-				vim.cmd.close()
-				vim.api.nvim_create_autocmd('User', {
-					pattern = 'AlphaReady',
-					callback = function()
-						require('lazy').show()
-					end,
-				})
-			end
-
-			require('alpha').setup(dashboard.opts)
-
-			vim.api.nvim_create_autocmd('User', {
-				pattern = 'LazyVimStarted',
-				callback = function()
-					local stats = require('lazy').stats()
-					local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-					-- stylua: ignore
-					dashboard.section.footer.val = '⚡ ' .. stats.count .. ' plugins loaded in ' .. ms .. 'ms'
-					pcall(vim.cmd.AlphaRedraw)
-				end,
-			})
+			return {
+				dashboard = {
+					width = 48,
+					preset = {
+						pick = nil,
+						keys = dashboard_keys,
+						header = dashboard_header,
+					},
+				},
+				bigfile = { size = 4 * 1024 * 1024 },
+				explorer = { enabled = true },
+				indent = { enabled = true },
+				input = { enabled = true },
+				picker = { enabled = true },
+				notifier = { enabled = true },
+				quickfile = { enabled = true },
+				statuscolumn = { enabled = true },
+				scope = { enabled = false },
+				scroll = { enabled = false },
+				words = { enabled = false },
+			}
 		end,
 	},
 

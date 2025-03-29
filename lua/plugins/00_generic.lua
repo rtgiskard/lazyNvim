@@ -59,43 +59,6 @@ return {
 		},
 	},
 
-	-- indent guides
-	{
-		'lukas-reineke/indent-blankline.nvim',
-		event = { 'BufReadPost', 'BufNewFile' },
-		main = 'ibl',
-		opts = {
-			indent = {
-				char = '│',
-				tab_char = '│',
-			},
-			scope = { enabled = false },
-			-- stylua: ignore
-			exclude = {
-				filetypes = { 'help', 'alpha', 'dashboard', 'neo-tree', 'Trouble', 'lazy', 'mason' },
-			},
-		},
-	},
-
-	-- active indent guide and indent text objects
-	{
-		'echasnovski/mini.indentscope',
-		event = { 'BufReadPost', 'BufNewFile' },
-		opts = {
-			symbol = '│',
-			options = { try_as_border = true },
-		},
-		init = function()
-			vim.api.nvim_create_autocmd('FileType', {
-				-- stylua: ignore
-				pattern = { 'help', 'alpha', 'dashboard', 'neo-tree', 'Trouble', 'lazy', 'mason' },
-				callback = function()
-					vim.b.miniindentscope_disable = true
-				end,
-			})
-		end,
-	},
-
 	-- file explorer
 	{
 		'nvim-neo-tree/neo-tree.nvim',
@@ -167,33 +130,6 @@ return {
 		event = 'VeryLazy',
 		opts = {
 			plugins = { spelling = true },
-		},
-	},
-
-	-- measure startuptime
-	{
-		'dstein64/vim-startuptime',
-		cmd = 'StartupTime',
-		config = function()
-			vim.g.startuptime_tries = 10
-		end,
-	},
-
-	-- make editing big files faster
-	{
-		'LunarVim/bigfile.nvim',
-		opts = {
-			filesize = 4, -- size of the file in MiB, the plugin round file sizes to the closest MiB
-			pattern = { '*' }, -- autocmd pattern or function
-			features = { -- features to disable
-				'lsp',
-				'treesitter',
-				'syntax',
-				'matchparen',
-				'vimopts',
-				'filetype',
-				'indent_blankline',
-			},
 		},
 	},
 }

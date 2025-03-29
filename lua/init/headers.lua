@@ -3,10 +3,8 @@ local M = {}
 
 -- stylua: ignore
 M.rand_pool = {
-	'camping', 'mountain', 'sunset', 'beach1', 'beach2', 'rains', 'snows',
-	'mushroom', 'clover', 'tree',
-	'dolphin1', 'dolphin2', 'dog1', 'dog2', 'cat1', 'cat2',
-	'pattern1', 'pattern2', 'fence',
+	'camping', 'mountain', 'sunset', 'beach1', 'beach2', 'mushroom',
+	'dolphin1', 'dolphin2', 'dog1', 'dog2', 'cat1', 'cat2', 'rains',
 }
 
 M.camping = [[
@@ -77,39 +75,6 @@ M.mushroom = [[
 _______\|/__________\\;_\\//___\|/________
 ]]
 
-M.clover = [[
-        ,,,                      ,,,
-       {{{}}    ,,,             {{{}}    ,,,
-    ,,, ~Y~    {{{}},,,      ,,, ~Y~    {{{}},,,
-   {{}}} |/,,,  ~Y~{{}}}    {{}}} |/,,,  ~Y~{{}}}
-    ~Y~ \|{{}}}/\|/ ~Y~  ,,, ~Y~ \|{{}}}/\|/ ~Y~  ,,,
-    \|/ \|/~Y~  \|,,,|/ {{}}}\|/ \|/~Y~  \|,,,|/ {{}}}
-    \|/ \|/\|/  \{{{}}/  ~Y~ \|/ \|/\|/  \{{{}}/  ~Y~
-    \|/\\|/\|/ \\|~Y~//  \|/ \|/\\|/\|/ \\|~Y~//  \|/
-    \|//\|/\|/,\\|/|/|// \|/ \|//\|/\|/,\\|/|/|// \|/
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-]]
-
-M.tree = [[
-              * *
-           *    *  *
-      *  *    *     *  *
-     *     *    *  *    *
- * *   *    *    *    *   *
- *     *  *    * * .#  *   *
- *   *     * #.  .# *   *
-  *     "#.  #: #" * *    *
- *   * * "#. ##"       *
-   *       "###
-             "##
-              ##.
-              .##:
-              :###
-              ;###
-            ,####.
-/\/\/\/\/\/.######.\/\/\/\/\
-]]
-
 M.rains = [[
         __I__
    .-'"  .  "'-.
@@ -125,26 +90,6 @@ M.rains = [[
        \/'.  \  /'\         \           /
         \    /=\  /         ||  |---'\  \
         /____)/____)       (_(__|   ((__|
-]]
-
-M.snows = [[
-    ...        *                        *       *
-      ...   *         * ..   ...                        *
- *      ...        *           *            *
-          ...               ...                          *
-            ..                            *
-    *        ..        *                       *
-           __##____              *                      *
-  *    *  /  ##  ****                   *
-         /        ****               *         *  X   *
-   *    /        ******     *                    XXX      *
-       /___________*****          *             XXXXX
-        |            ***               *       XXXXXXX   X
-    *   | ___        |                    *   XXXXXXXX  XXX
-  *     | | |   ___  | *       *             XXXXXXXXXXXXXXX
-        | |_|   | |  ****             *           X   XXXXXXX
-    *********** | | *******      *                X      X
-************************************************************
 ]]
 
 M.dolphin1 = [[
@@ -206,39 +151,6 @@ M.cat2 = [[
           `-    \`_`"'-
 ]]
 
-M.pattern1 = [[
-__/        \__/        \__/        \__/        \__/        \__/
-  \        /  \        /  \        /  \        /  \        /  \
-     \__/        \__/        \__/        \__/        \__/        \__/
-     /  \        /  \        /  \        /  \        /  \        /  \
-__/        \__/        \__/        \__/        \__/        \__/
-  \        /  \        /  \        /  \        /  \        /  \
-     \__/        \__/        \__/        \__/        \__/        \__/
-     /  \        /  \        /  \        /  \        /  \        /  \
-__/        \__/        \__/        \__/        \__/        \__/
-]]
-
-M.pattern2 = [[
-_|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_
- |       |       |       |       |       |       |       |       |
-    _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_
-     |       |       |       |       |       |       |       |
-_|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_
- |       |       |       |       |       |       |       |       |
-    _|_     _|_     _|_     _|_     _|_     _|_     _|_     _|_
-     |       |       |       |       |       |       |       |
-]]
-
-M.fence = [[
- _            ,'|     _ |`,      _            ,'|     _ |`,      _
-(:\          ///     /:) \\\    (:\          ///     /:) \\\    (:\
- \:\        )//     /:/   \\(    \:\        )//     /:/   \\(    \:\
-==\:(======/:(=====):/=====):\====\:(======/:(=====):/=====):\====\:(===
-   )\\    /:/     //(       \:\    )\\    /:/     //(       \:\    )\\
-    \\\  (:/     ///         \:)    \\\  (:/     ///         \:)    \\\
-     `.|  "     |.'           "      `.|  "     |.'           "      `.|
-]]
-
 ---@return table
 M.visual = function()
 	local logo = {}
@@ -254,7 +166,7 @@ M.visual = function()
 end
 
 ---@param name string?
----@return table
+---@return string
 M.getHeader = function(name)
 	if not name then
 		math.randomseed(os.time())
@@ -263,17 +175,17 @@ M.getHeader = function(name)
 
 	local header = M[name]
 
-	if type(header) == 'string' then
-		return vim.split(header, '\n')
-	end
-	if type(header) == 'table' then
-		return header
-	end
 	if type(header) == 'function' then
-		return header()
+		header = header()
 	end
 
-	return { '' }
+	if type(header) == 'string' then
+		return header
+	elseif type(header) == 'table' then
+		return table.concat(header, '\n')
+	end
+
+	return ''
 end
 
 return M
