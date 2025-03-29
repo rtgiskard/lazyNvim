@@ -24,11 +24,11 @@ return {
 						},
 					},
 				},
+				clangd = {
+					filetypes = { 'c', 'cpp' },
+				},
 				biome = { -- https://biomejs.dev/guides/integrate-in-editor/
 					single_file_support = true,
-				},
-				ast_grep = { -- https://ast-grep.github.io/guide/tools/editors.html
-					filetypes = { 'html', 'css' },
 				},
 			},
 		},
@@ -54,7 +54,7 @@ return {
 				have_cmp and cmp_lsp.default_capabilities() or {}
 			)
 
-			-- define setup handler for mason-lspconfig
+			-- define setup handler for lsp servers
 			local function s_setup(server)
 				local s_opts = vim.tbl_deep_extend('force', {
 					capabilities = vim.deepcopy(capabilities),
@@ -65,7 +65,6 @@ return {
 
 			-- check to setup manually in case no support from mason
 			for server, _ in pairs(opts.servers) do
-				-- stylua: ignore
 				if not vim.tbl_contains(mslp_servers, server) then
 					s_setup(server)
 				end

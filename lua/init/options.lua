@@ -79,6 +79,7 @@ M.plugins = {
 		'vala_ls',
 		'rust_analyzer',
 		'biome', -- ft: json, javascript, typescript
+		'buf_ls',
 	},
 
 	-- linter: nvim-lint
@@ -104,6 +105,7 @@ M.plugins = {
 			sh = { 'shfmt' },
 
 			d2 = { 'd2' },
+			proto = { 'buf' },
 
 			-- Use a sub-list to run only the first available formatter
 			css = { { 'prettierd', 'prettier' } },
