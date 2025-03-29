@@ -102,16 +102,6 @@ return {
 		end,
 	},
 
-	-- better vim.ui
-	{
-		'stevearc/dressing.nvim',
-		event = 'VeryLazy',
-		opts = {
-			input = { enabled = true },
-			select = { enabled = true },
-		},
-	},
-
 	-- icons
 	{ 'nvim-tree/nvim-web-devicons', lazy = true },
 
