@@ -82,9 +82,6 @@ return {
 
 			-- lsp completion
 			'hrsh7th/cmp-nvim-lsp',
-
-			-- load navic before LspAttach (required by navic lsp.auto_attach)
-			'SmiteshP/nvim-navic',
 		},
 	},
 
@@ -181,20 +178,6 @@ return {
 		dependencies = {
 			'nvim-tree/nvim-web-devicons',
 			'neovim/nvim-lspconfig',
-		},
-	},
-
-	-- lsp symbol navigation for lualine
-	{
-		'SmiteshP/nvim-navic',
-		lazy = true,
-		opts = {
-			highlight = true,
-			depth_limit = 7,
-			lsp = {
-				auto_attach = true,
-				preference = { 'clangd', 'pyright' },
-			},
 		},
 	},
 }
