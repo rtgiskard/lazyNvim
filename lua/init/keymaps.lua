@@ -22,11 +22,49 @@ M.basic = {
 
 -- keymaps for plugins
 
-M.neotree = { { '<F1>', '<cmd>Neotree toggle<cr>', desc = 'Toggle Neotree' } }
-M.trouble = { { '<F2>', '<cmd>Trouble<cr>', desc = 'Toggle Trouble' } }
+M.snacks = function()
+	local S = {}
+	setmetatable(S, {
+		__index = function(_, k)
+			return function()
+				local mod = (k == 'explorer') and 'snacks' or 'snacks.picker'
+				require(mod)[k]()
+			end
+		end,
+	})
+
+	return {
+		{ '<F1>', S.explorer, desc = 'file explorer' },
+
+		{ '<leader>fb', S.buffers, desc = 'find buffers' },
+		{ '<leader>ff', S.files, desc = 'find files' },
+		{ '<leader>fg', S.grep, desc = 'text grep' },
+		{ '<leader>fh', S.help, desc = 'help pages' },
+
+		{ '<leader>sj', S.jumps, desc = 'Jumps' },
+		{ '<leader>sk', S.keymaps, desc = 'Keymaps' },
+		{ '<leader>sl', S.loclist, desc = 'Location List' },
+		{ '<leader>sq', S.qflist, desc = 'Quickfix List' },
+		{ '<leader>sm', S.marks, desc = 'Marks' },
+
+		{ '<leader>sd', S.diagnostics, desc = 'diagnostics' },
+		{ '<leader>sD', S.diagnostics_buffer, desc = 'diagnostics buffer' },
+
+		{ 'gd', S.lsp_definitions, desc = 'Goto Definition' },
+		{ 'gD', S.lsp_declarations, desc = 'Goto Declaration' },
+		{ 'gr', S.lsp_references, nowait = true, desc = 'References' },
+		{ 'gI', S.lsp_implementations, desc = 'Goto Implementation' },
+		{ 'gy', S.lsp_type_definitions, desc = 'Goto Type Definition' },
+
+		{ '<leader>gs', S.lsp_symbols, desc = 'LSP Symbols' },
+		{ '<leader>gS', S.lsp_workspace_symbols, desc = 'LSP Workspace Symbols' },
+	}
+end
+
+M.trouble = { { '<F2>', ':Trouble<cr>', desc = 'Toggle Trouble' } }
 
 M.trim = {
-	{ '<C-1>', '<cmd>Trim<cr>', desc = 'Trim Space' },
+	{ '<C-1>', ':Trim<cr>', desc = 'Trim Space' },
 }
 
 M.notify = {
@@ -39,26 +77,31 @@ M.notify = {
 	},
 }
 
-M.telescope = {
-	{ '<leader>ff', '<cmd>Telescope find_files<cr>', desc = 'TL file' },
-	{ '<leader>fg', '<cmd>Telescope live_grep<cr>', desc = 'TL grep' },
-	{ '<leader>fb', '<cmd>Telescope buffers<cr>', desc = 'TL buffer' },
-	{ '<leader>fh', '<cmd>Telescope help_tags<cr>', desc = 'TL tags' },
-}
-
 -- stylua: ignore
 M.persistence = {
 	{ '<leader>Ss', function() require('persistence').save() end, desc = 'Save Session' },
 	{ '<leader>Sl', function() require('persistence').load() end, desc = 'Load Session' },
 }
 
-M.lsp = {
-	{ 'gD', vim.lsp.buf.declaration, desc = 'Goto Declaration' },
-	{ 'gr', '<cmd>Telescope lsp_references<cr>', desc = 'Goto References' },
-	{ 'gd', '<cmd>Telescope lsp_definitions<cr>', desc = 'Goto Definition' },
-	{ 'gI', '<cmd>Telescope lsp_implementations<cr>', desc = 'Goto Implementation' },
-	{ 'gt', '<cmd>Telescope lsp_type_definitions<cr>', desc = 'Goto Type Definition' },
+M.cmp = {
+	preset = 'none',
 
+	['<CR>'] = { 'accept', 'fallback' },
+	['<C-Tab>'] = { 'show', 'show_documentation', 'hide_documentation' },
+
+	['<Tab>'] = { 'snippet_forward', 'fallback' },
+	['<S-Tab>'] = { 'snippet_backward', 'fallback' },
+
+	['<C-e>'] = { 'hide' },
+	['<C-y>'] = { 'select_and_accept' },
+
+	['<Up>'] = { 'select_prev', 'fallback' },
+	['<Down>'] = { 'select_next', 'fallback' },
+	['<C-p>'] = { 'select_prev', 'fallback_to_mappings' },
+	['<C-n>'] = { 'select_next', 'fallback_to_mappings' },
+}
+
+M.lsp = {
 	{ 'K', vim.lsp.buf.hover, desc = 'Hover' },
 
 	{ '<C-d>', vim.diagnostic.open_float, desc = 'Line Diagnostics' },
@@ -67,7 +110,7 @@ M.lsp = {
 
 	{ '<C-f>', util.format, desc = 'Format' },
 
-	{ '<leader>cl', '<cmd>LspInfo<cr>', desc = 'Lsp Info' },
+	{ '<leader>cl', ':LspInfo<cr>', desc = 'Lsp Info' },
 }
 
 -- stylua: ignore
@@ -99,8 +142,8 @@ M.dapui = {
 }
 
 M.todo_comments = {
-	{ '<leader>xt', '<cmd>TodoTrouble<cr>', desc = 'Todo Trouble' },
-	{ '<leader>st', '<cmd>TodoTelescope<cr>', desc = 'Todo Search' },
+	{ '<leader>xt', ':TodoTrouble<cr>', desc = 'Todo Trouble' },
+	{ '<leader>st', ':TodoTelescope<cr>', desc = 'Todo Search' },
 }
 
 -- mini.comment: internal map in opts

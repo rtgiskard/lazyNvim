@@ -152,7 +152,7 @@ M.cat2 = [[
 ]]
 
 ---@return table
-M.visual = function()
+function M.visual_blocks()
 	local logo = {}
 	local chars = { '▀▄─', '▄▀─', '▀─▄', '▄─▀' }
 	for y = 0, 4 do
@@ -167,9 +167,9 @@ end
 
 ---@param str string
 ---@return string
-M.normalize_string = function(str)
-	local max_len = 0
+function M.normalize_string(str)
 	-- count max_len
+	local max_len = 0
 	str:gsub('[^\n]+', function(line)
 		max_len = math.max(max_len, #line)
 		return ''
@@ -186,7 +186,7 @@ end
 
 ---@param name string?
 ---@return string
-M.getHeader = function(name)
+function M.getHeader(name)
 	if not name then
 		math.randomseed(os.time())
 		name = M.rand_pool[math.random(1, #M.rand_pool)]

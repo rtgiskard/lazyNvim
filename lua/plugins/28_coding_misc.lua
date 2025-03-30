@@ -5,13 +5,15 @@ return {
 	{
 		'saghen/blink.cmp',
 		event = 'InsertEnter',
-		build = 'cargo build --release',
+		-- use prebuilt binary for fuzzy
+		version = '1.*',
+		-- build = 'cargo build --release',
 		opts = {
-			keymap = { preset = 'default' },
+			keymap = keymap.cmp,
 			completion = { documentation = { auto_show = false } },
-			sources = {
-				default = { 'lsp', 'path', 'snippets', 'buffer' },
-			},
+			snippets = { preset = 'default' },
+			signature = { enabled = true },
+			sources = { default = { 'lsp', 'path', 'snippets', 'buffer' } },
 			fuzzy = { implementation = 'prefer_rust_with_warning' },
 		},
 		dependencies = { 'rafamadriz/friendly-snippets' },
