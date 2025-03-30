@@ -165,6 +165,25 @@ M.visual = function()
 	return logo
 end
 
+---@param str string
+---@return string
+M.normalize_string = function(str)
+	local max_len = 0
+	-- count max_len
+	str:gsub('[^\n]+', function(line)
+		max_len = math.max(max_len, #line)
+		return ''
+	end)
+
+	-- padding
+	local template = '%-' .. max_len .. 's'
+	local result = str:gsub('[^\n]+', function(line)
+		return string.format(template, line)
+	end)
+
+	return result
+end
+
 ---@param name string?
 ---@return string
 M.getHeader = function(name)
@@ -180,7 +199,7 @@ M.getHeader = function(name)
 	end
 
 	if type(header) == 'string' then
-		return header
+		return M.normalize_string(header)
 	elseif type(header) == 'table' then
 		return table.concat(header, '\n')
 	end
