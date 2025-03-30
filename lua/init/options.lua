@@ -46,9 +46,6 @@ M.opt_g = {
 
 	-- split gdb and source code window vertical
 	termdebug_wide = '1',
-
-	-- snacks animate
-	snacks_animate = false,
 }
 
 -- to be used by lazy
