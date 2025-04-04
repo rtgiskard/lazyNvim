@@ -5,6 +5,8 @@ local util = require('init.utils')
 -- keymaps generic
 
 M.basic = {
+	{ '<F1>', '<nop>', mode = { 'n', 'i', 'v' }, desc = 'unbind :help' },
+
 	{ '<esc><esc>', '<c-\\><c-n>', mode = 't', desc = 'Normal Mode' },
 
 	{ '<C-t>', util.float_term, desc = 'Float Terminal' },
@@ -58,6 +60,7 @@ M.snacks = function()
 
 		{ '<leader>sd', S.picker.diagnostics, desc = 'diagnostics' },
 		{ '<leader>sD', S.picker.diagnostics_buffer, desc = 'diagnostics buffer' },
+		{ '<leader>st', S.picker.todo_comments, desc = 'todo' },
 
 		{ '<leader>gs', S.picker.lsp_symbols, desc = 'LSP Symbols' },
 		{ '<leader>gS', S.picker.lsp_workspace_symbols, desc = 'LSP Global Symbols' },
@@ -70,7 +73,7 @@ M.snacks = function()
 	}
 end
 
-M.trouble = { { '<F2>', ':Trouble<cr>', desc = 'Toggle Trouble' } }
+M.trouble = { { '<F2>', ':Trouble diagnostics<cr>', desc = 'Toggle Trouble' } }
 M.trim = { { '<C-1>', ':Trim<cr>', desc = 'Trim Space' } }
 
 -- stylua: ignore
@@ -135,11 +138,6 @@ M.dap = {
 M.dapui = {
 	{ '<leader>du', function() require('dapui').toggle() end, desc = 'DapUI toggle' },
 	{ '<leader>de', function() require('dapui').eval() end, desc = 'DapUI eval' },
-}
-
-M.todo_comments = {
-	{ '<leader>xt', ':TodoTrouble<cr>', desc = 'Todo Trouble' },
-	{ '<leader>st', ':TodoTelescope<cr>', desc = 'Todo Search' },
 }
 
 -- mini.comment: internal map in opts

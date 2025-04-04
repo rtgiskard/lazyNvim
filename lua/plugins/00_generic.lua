@@ -32,26 +32,6 @@ return {
 		},
 	},
 
-	-- fuzzy finder
-	{
-		'nvim-telescope/telescope.nvim',
-		cmd = 'Telescope',
-		opts = {
-			pickers = {
-				colorscheme = {
-					enable_preview = true,
-				},
-			},
-		},
-		dependencies = {
-			'nvim-lua/plenary.nvim',
-
-			-- optional
-			'nvim-treesitter/nvim-treesitter',
-			'nvim-tree/nvim-web-devicons',
-		},
-	},
-
 	-- minimal and fast autopairs
 	{
 		'echasnovski/mini.pairs',

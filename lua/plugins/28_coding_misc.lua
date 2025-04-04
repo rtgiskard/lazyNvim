@@ -37,10 +37,9 @@ return {
 	-- todo comments
 	{
 		'folke/todo-comments.nvim',
-		cmd = { 'TodoTrouble', 'TodoTelescope' },
+		cmd = { 'TodoTrouble' },
 		event = { 'BufReadPost', 'BufNewFile' },
 		opts = {},
-		keys = keymap.todo_comments,
 		dependencies = { 'nvim-lua/plenary.nvim' },
 	},
 
