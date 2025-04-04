@@ -39,6 +39,58 @@ return {
 				{ icon = '', key = 'q', desc = 'Quit', action = ':qa' },
 			}
 
+			local layouts = {
+				m_picker = {
+					reverse = true,
+					cycle = true,
+					layout = {
+						box = 'horizontal',
+						backdrop = false,
+						width = 0.78,
+						height = 0.87,
+						{
+							box = 'vertical',
+							border = 'rounded',
+							title = '{title} {live} {flags}',
+							{ win = 'list', border = 'none' },
+							{ win = 'input', height = 1, border = 'top' },
+							width = 0.43,
+						},
+						{
+							win = 'preview',
+							title = '{preview}',
+							border = 'rounded',
+						},
+					},
+				},
+				m_sidebar = {
+					preview = 'main',
+					layout = {
+						backdrop = false,
+						width = 40,
+						min_width = 40,
+						height = 0,
+						position = 'left',
+						border = 'none',
+						box = 'vertical',
+						{ win = 'list', border = 'none' },
+						{
+							win = 'preview',
+							title = '{preview}',
+							height = 0.4,
+							border = 'top',
+						},
+						{
+							win = 'input',
+							height = 1,
+							border = 'top',
+							title = '{title} {live} {flags}',
+							title_pos = 'center',
+						},
+					},
+				},
+			}
+
 			return {
 				dashboard = {
 					width = 48,
@@ -53,6 +105,16 @@ return {
 						smartcase = true,
 						ignorecase = true,
 					},
+					sources = {
+						explorer = {
+							layout = { preset = 'm_sidebar', preview = false },
+						},
+						lsp_symbols = {
+							icons = { tree = { last = '┌╴' } },
+						},
+					},
+					layout = { cycle = true, preset = 'm_picker' },
+					layouts = layouts,
 				},
 				notifier = {
 					timeout = 4000,
