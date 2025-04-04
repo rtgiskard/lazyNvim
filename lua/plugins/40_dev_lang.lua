@@ -3,7 +3,6 @@ return {
 	{
 		'linux-cultist/venv-selector.nvim',
 		cmd = { 'VenvSelect', 'VenvSelectCached' },
-		lazy = true,
 		branch = 'regexp',
 		config = function()
 			require('venv-selector').setup()

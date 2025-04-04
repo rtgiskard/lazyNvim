@@ -21,13 +21,9 @@ function M.toggle_listchars()
 end
 
 function M.toggle_diagnostic()
-	local state = vim.diagnostic.is_disabled()
-	if state then
-		vim.diagnostic.enable()
-	else
-		vim.diagnostic.disable()
-	end
-	M.notify_mini('󰨮 diagnostic: ' .. tostring(state))
+	local enabled = vim.diagnostic.is_enabled()
+	vim.diagnostic.enable(not enabled)
+	M.notify_mini('󰨮 diagnostic: ' .. tostring(not enabled))
 end
 
 function M.float_term(cmd, opts)
@@ -52,7 +48,11 @@ end
 ---@param msg string
 ---@param level? integer
 function M.notify_mini(msg, level)
-	vim.notify(msg, level or vim.log.levels.INFO, { render = 'minimal' })
+	vim.notify(
+		msg,
+		level or vim.log.levels.INFO,
+		{ style = 'compact', title = '', icon = '' }
+	)
 end
 
 function M.format()

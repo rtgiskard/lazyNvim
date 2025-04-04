@@ -26,56 +26,52 @@ M.snacks = function()
 	local S = {}
 	setmetatable(S, {
 		__index = function(_, k)
-			return function()
-				local mod = (k == 'explorer') and 'snacks' or 'snacks.picker'
-				require(mod)[k]()
+			if k == 'explorer' then
+				return function(...)
+					return require('snacks').explorer(...)
+				end
 			end
+			return setmetatable({}, {
+				__index = function(_, sub_k)
+					return function(...)
+						return require('snacks')[k][sub_k](...)
+					end
+				end,
+			})
 		end,
 	})
 
 	return {
 		{ '<F1>', S.explorer, desc = 'file explorer' },
+		{ '<C-2>', S.notifier.hide, desc = 'hide notifier' },
 
-		{ '<leader>fb', S.buffers, desc = 'find buffers' },
-		{ '<leader>ff', S.files, desc = 'find files' },
-		{ '<leader>fg', S.grep, desc = 'text grep' },
-		{ '<leader>fh', S.help, desc = 'help pages' },
+		{ '<leader>fb', S.picker.buffers, desc = 'find buffers' },
+		{ '<leader>ff', S.picker.files, desc = 'find files' },
+		{ '<leader>fg', S.picker.grep, desc = 'text grep' },
+		{ '<leader>fh', S.picker.help, desc = 'help pages' },
 
-		{ '<leader>sj', S.jumps, desc = 'Jumps' },
-		{ '<leader>sk', S.keymaps, desc = 'Keymaps' },
-		{ '<leader>sl', S.loclist, desc = 'Location List' },
-		{ '<leader>sq', S.qflist, desc = 'Quickfix List' },
-		{ '<leader>sm', S.marks, desc = 'Marks' },
+		{ '<leader>sj', S.picker.jumps, desc = 'Jumps' },
+		{ '<leader>sk', S.picker.keymaps, desc = 'Keymaps' },
+		{ '<leader>sl', S.picker.loclist, desc = 'Location List' },
+		{ '<leader>sq', S.picker.qflist, desc = 'Quickfix List' },
+		{ '<leader>sm', S.picker.marks, desc = 'Marks' },
 
-		{ '<leader>sd', S.diagnostics, desc = 'diagnostics' },
-		{ '<leader>sD', S.diagnostics_buffer, desc = 'diagnostics buffer' },
+		{ '<leader>sd', S.picker.diagnostics, desc = 'diagnostics' },
+		{ '<leader>sD', S.picker.diagnostics_buffer, desc = 'diagnostics buffer' },
 
-		{ 'gd', S.lsp_definitions, desc = 'Goto Definition' },
-		{ 'gD', S.lsp_declarations, desc = 'Goto Declaration' },
-		{ 'gr', S.lsp_references, nowait = true, desc = 'References' },
-		{ 'gI', S.lsp_implementations, desc = 'Goto Implementation' },
-		{ 'gy', S.lsp_type_definitions, desc = 'Goto Type Definition' },
+		{ '<leader>gs', S.picker.lsp_symbols, desc = 'LSP Symbols' },
+		{ '<leader>gS', S.picker.lsp_workspace_symbols, desc = 'LSP Global Symbols' },
 
-		{ '<leader>gs', S.lsp_symbols, desc = 'LSP Symbols' },
-		{ '<leader>gS', S.lsp_workspace_symbols, desc = 'LSP Workspace Symbols' },
+		{ 'gd', S.picker.lsp_definitions, desc = 'Goto Definition' },
+		{ 'gD', S.picker.lsp_declarations, desc = 'Goto Declaration' },
+		{ 'gr', S.picker.lsp_references, nowait = true, desc = 'References' },
+		{ 'gI', S.picker.lsp_implementations, desc = 'Goto Implementation' },
+		{ 'gy', S.picker.lsp_type_definitions, desc = 'Goto Type Definition' },
 	}
 end
 
 M.trouble = { { '<F2>', ':Trouble<cr>', desc = 'Toggle Trouble' } }
-
-M.trim = {
-	{ '<C-1>', ':Trim<cr>', desc = 'Trim Space' },
-}
-
-M.notify = {
-	{
-		'<C-2>',
-		function()
-			require('notify').dismiss({ silent = true, pending = true })
-		end,
-		desc = 'Silent Popup Notifications',
-	},
-}
+M.trim = { { '<C-1>', ':Trim<cr>', desc = 'Trim Space' } }
 
 -- stylua: ignore
 M.persistence = {
