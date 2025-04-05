@@ -8,24 +8,39 @@ return {
 	{
 		'nvim-lualine/lualine.nvim',
 		event = 'VeryLazy',
-		opts = {
-			options = {
-				theme = 'auto',
-				globalstatus = false,
-				icons_enabled = true,
-				disabled_filetypes = {
-					statusline = { 'dashboard', 'alpha' },
+		opts = function()
+			local symbols = require('trouble').statusline({
+				mode = 'lsp_document_symbols',
+				groups = {},
+				title = false,
+				filter = { range = true },
+				format = '{kind_icon}{symbol.name:Normal}',
+				hl_group = 'lualine_c_normal',
+			})
+
+			return {
+				options = {
+					theme = 'auto',
+					globalstatus = false,
+					icons_enabled = true,
+					disabled_filetypes = {
+						statusline = { 'dashboard', 'alpha' },
+					},
 				},
-			},
-			sections = {
-				lualine_a = { 'mode' },
-				lualine_b = { 'branch', 'diff', 'diagnostics' },
-				lualine_c = { 'filename', 'searchcount' },
-				lualine_x = { 'encoding', 'fileformat', 'filetype' },
-				lualine_y = { 'progress' },
-				lualine_z = { 'location' },
-			},
-		},
+				sections = {
+					lualine_a = { 'mode' },
+					lualine_b = { 'branch', 'diff', 'diagnostics' },
+					lualine_c = {
+						'filename',
+						{ symbols.get, cond = symbols.has },
+					},
+					lualine_x = { 'encoding', 'fileformat', 'filetype' },
+					lualine_y = { 'progress' },
+					lualine_z = { 'location' },
+				},
+				extensions = { 'quickfix', 'trouble' },
+			}
+		end,
 		dependencies = {
 			-- optional
 			'nvim-tree/nvim-web-devicons',
