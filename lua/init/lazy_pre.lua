@@ -30,17 +30,18 @@ end
 
 function M.load_lazy()
 	require('lazy').setup({
-		spec = { { import = 'plugins' } },
-
 		-- directory where plugins will be installed
 		root = vim.fn.stdpath('data') .. '/lazy',
 		lockfile = vim.fn.stdpath('data') .. '/lazy-lock.json',
+
+		spec = { { import = 'plugins' } },
+		rocks = { enabled = false },
 
 		defaults = { lazy = false, version = false },
 		checker = { enabled = option.plugins.auto_check, frequency = 86400 },
 		install = {
 			missing = option.plugins.auto_install,
-			colorscheme = { option.plugins.colorscheme, 'habamax' },
+			colorscheme = { option.plugins.colorscheme },
 		},
 		ui = {
 			wrap = true,
@@ -54,6 +55,8 @@ function M.load_lazy()
 					'gzip',
 					'matchit',
 					'matchparent',
+					'netrwPlugin',
+					'tarPlugin',
 					'tohtml',
 					'tutor',
 					'zipPlugin',
