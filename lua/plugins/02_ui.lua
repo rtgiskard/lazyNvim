@@ -44,17 +44,17 @@ return {
 					reverse = true,
 					cycle = true,
 					layout = {
-						box = 'horizontal',
 						backdrop = false,
 						width = 0.78,
 						height = 0.87,
+						box = 'horizontal',
 						{
+							width = 0.43,
 							box = 'vertical',
 							border = 'rounded',
 							title = '{title} {live} {flags}',
 							{ win = 'list', border = 'none' },
-							{ win = 'input', height = 1, border = 'top' },
-							width = 0.43,
+							{ win = 'input', border = 'top', height = 1 },
 						},
 						{
 							win = 'preview',
@@ -63,12 +63,27 @@ return {
 						},
 					},
 				},
+				m_picker_v = {
+					reverse = true,
+					cycle = true,
+					layout = {
+						backdrop = false,
+						width = 0.78,
+						height = 0.87,
+						box = 'vertical',
+						border = 'rounded',
+						title = '{title} {live} {flags}',
+						{ win = 'preview', height = 0.4 },
+						{ win = 'list', border = 'top' },
+						{ win = 'input', border = 'top', height = 1 },
+					},
+				},
 				m_sidebar = {
 					preview = 'main',
 					layout = {
 						backdrop = false,
 						width = 40,
-						min_width = 40,
+						min_width = 28,
 						height = 0,
 						position = 'left',
 						border = 'none',
@@ -77,15 +92,15 @@ return {
 						{
 							win = 'preview',
 							title = '{preview}',
-							height = 0.4,
 							border = 'top',
+							height = 0.4,
 						},
 						{
 							win = 'input',
-							height = 1,
-							border = 'top',
 							title = '{title} {live} {flags}',
 							title_pos = 'center',
+							border = 'top',
+							height = 1,
 						},
 					},
 				},
@@ -107,18 +122,24 @@ return {
 					},
 					sources = {
 						explorer = {
-							layout = { preset = 'm_sidebar', preview = false },
+							layout = { preset = 'm_sidebar' },
 						},
 						lsp_symbols = {
 							icons = { tree = { last = '┌╴' } },
 						},
 					},
-					layout = { cycle = true, preset = 'm_picker' },
+					layout = {
+						cycle = true,
+						preset = function()
+							return vim.o.columns >= 120 and 'm_picker' or 'm_picker_v'
+						end,
+					},
 					layouts = layouts,
 				},
 				notifier = {
 					timeout = 4000,
 					style = 'fancy',
+					sort = { 'added' },
 					width = { min = 28, max = 0.4 },
 					height = { min = 1, max = 0.6 },
 				},

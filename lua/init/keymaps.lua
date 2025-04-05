@@ -24,6 +24,8 @@ M.basic = {
 
 -- keymaps for plugins
 
+M.trim = { { '<C-1>', ':Trim<cr>', desc = 'Trim Space' } }
+
 M.snacks = function()
 	local S = {}
 	setmetatable(S, {
@@ -58,12 +60,11 @@ M.snacks = function()
 		{ '<leader>sq', S.picker.qflist, desc = 'Quickfix List' },
 		{ '<leader>sm', S.picker.marks, desc = 'Marks' },
 
-		{ '<leader>sd', S.picker.diagnostics, desc = 'diagnostics' },
-		{ '<leader>sD', S.picker.diagnostics_buffer, desc = 'diagnostics buffer' },
+		{ '<leader>sD', S.picker.diagnostics, desc = 'diagnostics global' },
+		{ '<leader>sd', S.picker.diagnostics_buffer, desc = 'diagnostics' },
+		{ '<leader>ss', S.picker.lsp_symbols, desc = 'symbols' },
+		{ '<leader>sS', S.picker.lsp_workspace_symbols, desc = 'symbols global' },
 		{ '<leader>st', S.picker.todo_comments, desc = 'todo' },
-
-		{ '<leader>gs', S.picker.lsp_symbols, desc = 'LSP Symbols' },
-		{ '<leader>gS', S.picker.lsp_workspace_symbols, desc = 'LSP Global Symbols' },
 
 		{ 'gd', S.picker.lsp_definitions, desc = 'Goto Definition' },
 		{ 'gD', S.picker.lsp_declarations, desc = 'Goto Declaration' },
@@ -73,8 +74,10 @@ M.snacks = function()
 	}
 end
 
-M.trouble = { { '<F2>', ':Trouble diagnostics<cr>', desc = 'Toggle Trouble' } }
-M.trim = { { '<C-1>', ':Trim<cr>', desc = 'Trim Space' } }
+M.trouble = {
+	{ '<F3>', ':Trouble symbols toggle<cr>', desc = 'toggle symbols' },
+	{ '<F4>', ':Trouble diagnostics toggle<cr>', desc = 'toggle diagnostics' },
+}
 
 -- stylua: ignore
 M.persistence = {
