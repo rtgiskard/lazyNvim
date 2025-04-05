@@ -24,7 +24,7 @@ return {
 					globalstatus = false,
 					icons_enabled = true,
 					disabled_filetypes = {
-						statusline = { 'dashboard', 'alpha' },
+						statusline = { 'snacks_dashboard' },
 					},
 				},
 				sections = {
@@ -38,7 +38,7 @@ return {
 					lualine_y = { 'progress' },
 					lualine_z = { 'location' },
 				},
-				extensions = { 'quickfix', 'trouble' },
+				extensions = { 'trouble' },
 			}
 		end,
 		dependencies = {
