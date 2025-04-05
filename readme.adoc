@@ -18,10 +18,10 @@ This is my personal neovim config inspired by https://github.com/LazyVim/LazyVim
 
 [cols="1,1,1", grid=none, frame=none]
 |===
-3+| image:https://github.com/rtgiskard/lazyNvim/assets/34635040/c5946b1c-b86b-47b9-994f-0cbd0a3c2f2d[dashboard]
-| image:https://github.com/rtgiskard/lazyNvim/assets/34635040/3b877e01-f7c6-4262-b2ba-3a055c3a4db9[coding]
-| image:https://github.com/rtgiskard/lazyNvim/assets/34635040/6b68b652-17a3-4e65-88ee-40b292ec030f[plugins]
-| image:https://github.com/rtgiskard/lazyNvim/assets/34635040/ad107377-2233-48e9-9bd1-9f2c0c8a3f43[float terminal]
+3+| image:https://github.com/user-attachments/assets/a99b4096-18dd-47d1-b6b0-7e0f0864f2ad[dashboard]
+| image:https://github.com/user-attachments/assets/b3cb3838-64ea-43fc-88e2-a24febc92a48[coding]
+| image:https://github.com/user-attachments/assets/d5a5e0c2-05f3-4c55-97e5-f4352ba6e4f2[plugins]
+| image:https://github.com/user-attachments/assets/f03878a8-f95f-4d91-88a2-9740ddbbd921[float terminal]
 |===
 
 
@@ -93,11 +93,10 @@ And you may also find some references from https://www.lazyvim.org/[lazyVim's do
 . `lspconfig`: configurations for lsp servers
 
 - ui enhancement:
-. telescope: the extendable fuzzy finder
-. notify: popup notification
+. snacks: notify, picker, indent, dashboard, ..
 . themes and misc
 
-- other tools: complete, indent, trim, pairs, and etc.
+- other tools: completion, trim, pairs, and etc.
 
 
 == 🧾 License
