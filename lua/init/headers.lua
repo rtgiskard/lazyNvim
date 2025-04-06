@@ -176,9 +176,8 @@ function M.normalize_string(str)
 	end)
 
 	-- padding
-	local template = '%-' .. max_len .. 's'
 	local result = str:gsub('[^\n]+', function(line)
-		return string.format(template, line)
+		return string.format('%-' .. max_len .. 's', line)
 	end)
 
 	return result
