@@ -19,11 +19,25 @@ return {
 				menu = { draw = { treesitter = { 'lsp' } } },
 			},
 			sources = { default = { 'lsp', 'path', 'snippets', 'buffer' } },
-			snippets = { preset = 'default' },
+			snippets = { preset = 'luasnip' },
 			signature = { enabled = false, window = { show_documentation = false } },
 			cmdline = { enabled = false },
 			fuzzy = { implementation = 'lua' },
 		},
+		dependencies = {
+			'L3MON4D3/LuaSnip',
+		},
+	},
+
+	-- snippet engine, for friendly-snippets
+	{
+		'L3MON4D3/LuaSnip',
+		event = 'VeryLazy',
+		version = 'v2.*', -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+		build = 'make install_jsregexp',
+		config = function()
+			require('luasnip.loaders.from_vscode').lazy_load()
+		end,
 		dependencies = { 'rafamadriz/friendly-snippets' },
 	},
 
