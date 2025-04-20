@@ -143,7 +143,7 @@ return {
 					width = { min = 28, max = 0.4 },
 					height = { min = 1, max = 0.6 },
 				},
-				bigfile = { size = 4 * 1024 * 1024 },
+				bigfile = { enabled = false, size = 4 * 1024 * 1024 },
 				explorer = { enabled = true },
 				indent = { enabled = true },
 				input = { enabled = true },
