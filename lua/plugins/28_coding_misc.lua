@@ -19,14 +19,28 @@ return {
 				list = { selection = { preselect = true, auto_insert = false } },
 				menu = { border = 'rounded', draw = { treesitter = { 'lsp' } } },
 			},
-			sources = { default = { 'lsp', 'path', 'snippets', 'buffer' } },
+			sources = {
+				default = { 'lsp', 'path', 'snippets', 'buffer' },
+				providers = {
+					lsp = { score_offset = 4 },
+					buffer = { score_offset = 2 },
+					path = { score_offset = 2 },
+					snippets = { score_offset = -2, min_keyword_length = 2 },
+				},
+			},
 			snippets = { preset = 'luasnip' },
 			signature = {
 				enabled = false,
 				window = { show_documentation = false, border = 'rounded' },
 			},
 			cmdline = { enabled = false },
-			fuzzy = { implementation = 'lua' },
+			fuzzy = {
+				implementation = 'lua',
+				sorts = {
+					'score',
+					'sort_text',
+				},
+			},
 		},
 		dependencies = {
 			'L3MON4D3/LuaSnip',
