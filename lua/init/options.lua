@@ -78,7 +78,7 @@ M.plugins = {
 		'lua_ls',
 		'vala_ls',
 		'rust_analyzer',
-		'biome', -- ft: json, javascript, typescript
+		'biome', -- ft: json, ts, js, css
 		'buf_ls',
 	},
 
@@ -106,10 +106,6 @@ M.plugins = {
 
 			d2 = { 'd2' },
 			proto = { 'buf' },
-
-			-- Use a sub-list to run only the first available formatter
-			css = { { 'prettierd', 'prettier' } },
-			scss = { { 'prettierd', 'prettier' } },
 		},
 
 		-- customize formatters
