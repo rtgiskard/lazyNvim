@@ -36,43 +36,9 @@ return {
 			-- diagnostic
 			vim.diagnostic.config(opts.diagnostics)
 
-			-- define setup handler for lsp servers
-			local function s_setup(server)
-				-- merge cmp caps
-				local capabilities = vim.tbl_deep_extend(
-					'force',
-					vim.lsp.protocol.make_client_capabilities(),
-					require('blink.cmp').get_lsp_capabilities({}, false)
-				)
-				-- merge cust config
-				require('lspconfig')[server].setup(
-					vim.tbl_deep_extend(
-						'force',
-						{ capabilities = capabilities },
-						opts.servers[server] or {}
-					)
-				)
-			end
-
-			-- setup order: mason -> mason-lspconfig - lsp.server
-			local have_mason, mlsp = pcall(require, 'mason-lspconfig')
-			local mslp_servers = {}
-			if have_mason then
-				mslp_servers = vim.tbl_keys(
-					require('mason-lspconfig.mappings.server').lspconfig_to_package
-				)
-			end
-
-			-- check to setup manually in case no support from mason
-			for server, _ in pairs(opts.servers) do
-				if not vim.tbl_contains(mslp_servers, server) then
-					s_setup(server)
-				end
-			end
-
-			-- check to setup with mason-lspconfig
-			if have_mason then
-				mlsp.setup_handlers({ s_setup })
+			-- apply customized lsp config
+			for server, conf in pairs(opts.servers) do
+				vim.lsp.config(server, conf)
 			end
 		end,
 		dependencies = {
