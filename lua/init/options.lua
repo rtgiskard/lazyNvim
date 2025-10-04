@@ -71,12 +71,12 @@ M.plugins = {
 
 	lsp_servers = {
 		'clangd',
-		'zls',
+		-- 'zls',
 		'gopls',
 		-- 'pylyzer',
 		'pyright',
 		'lua_ls',
-		'vala_ls',
+		-- 'vala_ls',
 		'rust_analyzer',
 		'biome', -- ft: json, ts, js, css
 		'buf_ls',
