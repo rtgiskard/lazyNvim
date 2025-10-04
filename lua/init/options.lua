@@ -106,6 +106,9 @@ M.plugins = {
 
 			d2 = { 'd2' },
 			proto = { 'buf' },
+			json = { 'biome' },
+			jsonc = { 'biome' },
+			css = { 'biome' },
 		},
 
 		-- customize formatters
