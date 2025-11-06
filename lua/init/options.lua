@@ -63,7 +63,7 @@ M.plugins = {
 	-- stylua: ignore
 	ts_parsers = {
 		'c', 'cpp', 'zig', 'go', 'python', 'lua', 'vala', 'bash',
-		'meson', 'make', 'cmake', 'dockerfile',
+		'meson', 'make', 'cmake',
 		'toml', 'yaml', 'proto', 'sql', 'scheme',
 		'vim', 'vimdoc', 'query', 'regex', 'latex',
 		'markdown', 'markdown_inline',
@@ -80,6 +80,7 @@ M.plugins = {
 		'rust_analyzer',
 		'biome', -- ft: json, ts, js, css
 		'buf_ls',
+		'docker_language_server',
 	},
 
 	-- linter: nvim-lint
