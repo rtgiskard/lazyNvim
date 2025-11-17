@@ -3,10 +3,7 @@ return {
 	{
 		'linux-cultist/venv-selector.nvim',
 		cmd = { 'VenvSelect', 'VenvSelectCached' },
-		branch = 'regexp',
-		config = function()
-			require('venv-selector').setup()
-		end,
+		opts = {},
 		dependencies = {
 			'neovim/nvim-lspconfig',
 			-- 'mfussenegger/nvim-dap-python',
