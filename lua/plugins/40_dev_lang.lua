@@ -2,7 +2,7 @@ return {
 	-- python virtual environment
 	{
 		'linux-cultist/venv-selector.nvim',
-		cmd = { 'VenvSelect', 'VenvSelectCached' },
+		cmd = { 'VenvSelect' },
 		opts = {},
 		dependencies = {
 			'neovim/nvim-lspconfig',
