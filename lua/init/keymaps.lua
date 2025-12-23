@@ -155,18 +155,6 @@ M.mini_comment = {
 	textobject = '',
 }
 
--- ts-refactor: internal map
-M.ts_refactor = {
-	rename = { smart_rename = 'gR' },
-	navigate = {
-		goto_definition = 'gd',
-		list_definitions = 'gl',
-		list_definitions_toc = 'gL',
-		goto_next_usage = false,
-		goto_previous_usage = false,
-	},
-}
-
 function M.load_keymaps()
 	for _, km in ipairs(M.basic) do
 		local mode = km.mode or { 'n', 'v', 'o' }
