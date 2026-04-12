@@ -74,7 +74,7 @@ M.plugins = {
 		-- 'zls',
 		'gopls',
 		-- 'pylyzer',
-		'pyright',
+		'basedpyright',
 		'lua_ls',
 		-- 'vala_ls',
 		'rust_analyzer',
