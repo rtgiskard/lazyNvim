@@ -138,7 +138,7 @@ function M.load_options()
 	for k, v in pairs(M.opt_g) do vim.g[k] = v end
 
 	-- disable lsp log, which can be large
-	vim.lsp.set_log_level('off')
+	vim.lsp.log.set_level('off')
 end
 
 return M
