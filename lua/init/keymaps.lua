@@ -112,7 +112,6 @@ M.lsp = {
 
 	{ '<C-f>', util.format, desc = 'Format' },
 
-	{ '<leader>cl', ':LspInfo<cr>', desc = 'Lsp Info' },
 	{ '<leader>cR', vim.lsp.buf.rename, desc = 'Lsp Rename' },
 }
 
