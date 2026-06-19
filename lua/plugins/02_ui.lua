@@ -143,7 +143,20 @@ return {
 					width = { min = 28, max = 0.4 },
 					height = { min = 1, max = 0.6 },
 				},
-				bigfile = { enabled = false, size = 4 * 1024 * 1024 },
+				bigfile = {
+					enabled = true,
+					notify = false,
+					size = 4 * 1024 * 1024,
+					setup = function(ctx)
+						vim.wo.foldmethod = 'manual'
+						vim.b.completion = false
+						vim.schedule(function()
+							if vim.api.nvim_buf_is_valid(ctx.buf) then
+								vim.bo[ctx.buf].syntax = ctx.ft
+							end
+						end)
+					end,
+				},
 				explorer = { enabled = true },
 				indent = { enabled = true },
 				input = { enabled = true },

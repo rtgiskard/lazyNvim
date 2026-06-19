@@ -90,22 +90,4 @@ return {
 			trim_first_line = false,
 		},
 	},
-
-	-- make editing big files faster
-	{
-		'LunarVim/bigfile.nvim',
-		opts = {
-			filesize = 4, -- size of the file in MiB, round to the closest MiB
-			pattern = { '*' }, -- autocmd pattern or function
-			features = { -- features to disable
-				'lsp',
-				'treesitter',
-				'syntax',
-				'matchparen',
-				'vimopts',
-				'filetype',
-				'indent_blankline',
-			},
-		},
-	},
 }
