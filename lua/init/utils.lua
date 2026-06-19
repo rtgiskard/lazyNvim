@@ -38,6 +38,35 @@ function M.float_term(cmd, opts)
 	end
 end
 
+function M.trim_space()
+	local view = vim.fn.winsaveview()
+	vim.cmd([[%s/\s\+$//e]])
+	vim.fn.winrestview(view)
+	M.notify_mini('trimmed trailing space')
+end
+
+function M.session_file()
+	local dir = vim.fn.stdpath('state') .. '/sessions'
+	vim.fn.mkdir(dir, 'p')
+	return dir .. '/' .. vim.fn.sha256(vim.fn.getcwd()) .. '.vim'
+end
+
+function M.save_session()
+	local file = M.session_file()
+	vim.cmd('mksession! ' .. vim.fn.fnameescape(file))
+	M.notify_mini('session saved')
+end
+
+function M.load_session()
+	local file = M.session_file()
+	if vim.fn.filereadable(file) == 0 then
+		M.notify_mini('session not found', vim.log.levels.WARN)
+		return
+	end
+	vim.cmd('source ' .. vim.fn.fnameescape(file))
+	M.notify_mini('session loaded')
+end
+
 -- utils for plugins
 
 ---@param plugin string

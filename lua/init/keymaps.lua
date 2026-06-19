@@ -22,9 +22,36 @@ M.basic = {
 	{ '<F16>', util.toggle_diagnostic, desc = 'Toggle Diagnostic' },
 }
 
--- keymaps for plugins
+-- keymaps core
 
-M.trim = { { '<C-1>', ':Trim<cr>', desc = 'Trim Space' } }
+M.core = {
+	-- edit
+	{ '<C-1>', util.trim_space, desc = 'Trim Space' },
+	{ 'cc', 'gcc', desc = 'Toggle Comment', remap = true },
+	{ 'cc', 'gc', mode = 'x', desc = 'Toggle Comment', remap = true },
+
+	-- outline
+	{
+		'<F3>',
+		function()
+			require('snacks').picker.lsp_symbols()
+		end,
+		desc = 'symbols',
+	},
+	{
+		'<F4>',
+		function()
+			require('snacks').picker.diagnostics()
+		end,
+		desc = 'diagnostics',
+	},
+
+	-- session
+	{ '<leader>Ss', util.save_session, desc = 'Save Session' },
+	{ '<leader>Sl', util.load_session, desc = 'Load Session' },
+}
+
+-- keymaps for plugins
 
 M.snacks = function()
 	local S = {}
@@ -73,17 +100,6 @@ M.snacks = function()
 		{ 'gy', S.picker.lsp_type_definitions, desc = 'Goto Type Definition' },
 	}
 end
-
-M.trouble = {
-	{ '<F3>', ':Trouble symbols toggle<cr>', desc = 'toggle symbols' },
-	{ '<F4>', ':Trouble diagnostics toggle<cr>', desc = 'toggle diagnostics' },
-}
-
--- stylua: ignore
-M.persistence = {
-	{ '<leader>Ss', function() require('persistence').save() end, desc = 'Save Session' },
-	{ '<leader>Sl', function() require('persistence').load() end, desc = 'Load Session' },
-}
 
 M.cmp = {
 	preset = 'none',
@@ -143,23 +159,16 @@ M.dapui = {
 	{ '<leader>de', function() require('dapui').eval() end, desc = 'DapUI eval' },
 }
 
--- mini.comment: internal map in opts
-M.mini_comment = {
-	-- Use `''` (empty string) to disable one.
-
-	comment = '', -- Toggle comment for both Normal and Visual modes
-	comment_line = 'cc', -- Toggle comment on current line
-	comment_visual = 'cc', -- Toggle comment on visual selection
-
-	-- Define 'comment' textobject (like `dgc` - delete whole comment block)
-	textobject = '',
-}
+local function set_keymaps(maps)
+	for _, km in ipairs(maps) do
+		local mode = km.mode or 'n'
+		vim.keymap.set(mode, km[1], km[2], { desc = km.desc, remap = km.remap })
+	end
+end
 
 function M.load_keymaps()
-	for _, km in ipairs(M.basic) do
-		local mode = km.mode or { 'n', 'v', 'o' }
-		vim.keymap.set(mode, km[1], km[2], { desc = km.desc })
-	end
+	set_keymaps(M.basic)
+	set_keymaps(M.core)
 end
 
 return M
