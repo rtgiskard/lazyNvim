@@ -47,25 +47,11 @@ return {
 		},
 	},
 
-	-- todo comments
-	{
-		'folke/todo-comments.nvim',
-		cmd = { 'TodoQuickFix', 'TodoLocList' },
-		event = { 'BufReadPost', 'BufNewFile' },
-		opts = {},
-		dependencies = { 'nvim-lua/plenary.nvim' },
-	},
-
-	-- d2 diagram
-	{
-		'terrastruct/d2-vim',
-		ft = { 'd2' },
-	},
-
 	-- diff view
 	{
 		'sindrets/diffview.nvim',
 		cmd = { 'DiffviewOpen' },
+		dependencies = { 'nvim-lua/plenary.nvim' },
 	},
 
 	-- git buffer integration

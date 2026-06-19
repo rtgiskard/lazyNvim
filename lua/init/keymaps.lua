@@ -91,7 +91,6 @@ M.snacks = function()
 		{ '<leader>sd', S.picker.diagnostics_buffer, desc = 'diagnostics' },
 		{ '<leader>ss', S.picker.lsp_symbols, desc = 'symbols' },
 		{ '<leader>sS', S.picker.lsp_workspace_symbols, desc = 'symbols global' },
-		{ '<leader>st', S.picker.todo_comments, desc = 'todo' },
 
 		{ 'gd', S.picker.lsp_definitions, desc = 'Goto Definition' },
 		{ 'gD', S.picker.lsp_declarations, desc = 'Goto Declaration' },

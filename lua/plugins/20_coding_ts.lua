@@ -4,7 +4,6 @@ return {
 		'nvim-treesitter/nvim-treesitter',
 		build = ':TSUpdate',
 		dependencies = {
-			-- auto load
 			'HiPhish/rainbow-delimiters.nvim',
 		},
 	},

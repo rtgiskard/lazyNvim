@@ -96,7 +96,7 @@ And you may also find some references from https://www.lazyvim.org/[lazyVim's do
 . snacks: notify, picker, indent, dashboard, ..
 . themes and misc
 
-- other tools: completion, trim, pairs, and etc.
+- other tools: completion, pairs, git helpers, and etc.
 
 
 == 🧾 License

@@ -100,7 +100,6 @@ M.plugins = {
 			lua = { 'stylua' },
 			sh = { 'shfmt' },
 
-			d2 = { 'd2' },
 			proto = { 'buf' },
 			json = { 'biome' },
 			jsonc = { 'biome' },
