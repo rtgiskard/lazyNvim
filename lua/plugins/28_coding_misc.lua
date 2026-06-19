@@ -43,6 +43,7 @@ return {
 			},
 		},
 		dependencies = {
+			'saghen/blink.lib',
 			'L3MON4D3/LuaSnip',
 		},
 	},
