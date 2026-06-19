@@ -72,15 +72,17 @@ function M.format()
 			return
 		end
 
-		-- notify with noice progress api
-		local noice_progress = require('noice.lsp.progress')
-
 		local fmt_info = 'fmt: ' .. table.concat(fmt_names, '/')
-		local msg_id = noice_progress.progress_msg(fmt_info)
+		local progress = require('fidget.progress').handle.create({
+			title = fmt_info,
+			message = 'running',
+			lsp_client = { name = 'conform' },
+			percentage = 0,
+		})
 
 		-- format with callback, and notify on err
 		fmt_util.format(nil, function(err)
-			noice_progress.progress_msg_end(msg_id)
+			progress:finish()
 			if err then
 				vim.notify(err, vim.log.levels.WARN, { title = fmt_info })
 			end
