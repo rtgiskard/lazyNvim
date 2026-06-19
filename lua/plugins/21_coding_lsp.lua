@@ -139,16 +139,4 @@ return {
 			})
 		end,
 	},
-
-	-- better diagnostics list and others
-	{
-		'folke/trouble.nvim',
-		cmd = 'Trouble',
-		opts = {},
-		keys = keymap.trouble,
-		dependencies = {
-			'nvim-tree/nvim-web-devicons',
-			'neovim/nvim-lspconfig',
-		},
-	},
 }

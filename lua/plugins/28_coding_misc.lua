@@ -28,7 +28,7 @@ return {
 					snippets = { score_offset = -2, min_keyword_length = 2 },
 				},
 			},
-			snippets = { preset = 'luasnip' },
+			snippets = { preset = 'default' },
 			signature = {
 				enabled = false,
 				window = { show_documentation = false, border = 'rounded' },
@@ -44,33 +44,13 @@ return {
 		},
 		dependencies = {
 			'saghen/blink.lib',
-			'L3MON4D3/LuaSnip',
 		},
-	},
-
-	-- snippet engine, for friendly-snippets
-	{
-		'L3MON4D3/LuaSnip',
-		event = 'VeryLazy',
-		version = 'v2.*', -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-		build = 'make install_jsregexp',
-		config = function()
-			require('luasnip.loaders.from_vscode').lazy_load()
-		end,
-		dependencies = { 'rafamadriz/friendly-snippets' },
-	},
-
-	-- comments
-	{
-		'echasnovski/mini.comment',
-		event = 'VeryLazy',
-		opts = { mappings = keymap.mini_comment },
 	},
 
 	-- todo comments
 	{
 		'folke/todo-comments.nvim',
-		cmd = { 'TodoTrouble' },
+		cmd = { 'TodoQuickFix', 'TodoLocList' },
 		event = { 'BufReadPost', 'BufNewFile' },
 		opts = {},
 		dependencies = { 'nvim-lua/plenary.nvim' },

@@ -1,5 +1,3 @@
-local keymap = require('init.keymaps')
-
 return {
 	-- the package manager
 	{ 'folke/lazy.nvim' },
@@ -9,15 +7,6 @@ return {
 		'nvim-lualine/lualine.nvim',
 		event = 'VeryLazy',
 		opts = function()
-			local symbols = require('trouble').statusline({
-				mode = 'lsp_document_symbols',
-				groups = {},
-				title = false,
-				filter = { range = true },
-				format = '{kind_icon}{symbol.name:Normal}',
-				hl_group = 'lualine_c_normal',
-			})
-
 			return {
 				options = {
 					theme = 'auto',
@@ -30,15 +19,11 @@ return {
 				sections = {
 					lualine_a = { 'mode' },
 					lualine_b = { 'branch', 'diff', 'diagnostics' },
-					lualine_c = {
-						'filename',
-						{ symbols.get, cond = symbols.has },
-					},
+					lualine_c = { 'filename' },
 					lualine_x = { 'encoding', 'fileformat', 'filetype' },
 					lualine_y = { 'progress' },
 					lualine_z = { 'location' },
 				},
-				extensions = { 'trouble' },
 			}
 		end,
 		dependencies = {
@@ -56,38 +41,12 @@ return {
 		},
 	},
 
-	-- session management
-	{
-		'folke/persistence.nvim',
-		lazy = true,
-		keys = keymap.persistence,
-		opts = {
-			options = { 'buffers', 'curdir', 'tabpages', 'winsize', 'help' },
-			pre_save = nil,
-		},
-		config = function(_, opts)
-			-- setup config only, no auto save
-			require('persistence.config').setup(opts)
-		end,
-	},
-
 	-- hint with which-key
 	{
 		'folke/which-key.nvim',
 		event = 'VeryLazy',
 		opts = {
 			plugins = { spelling = true },
-		},
-	},
-
-	-- trim whitespace
-	{
-		'cappyzawa/trim.nvim',
-		cmd = 'Trim',
-		keys = keymap.trim,
-		opts = {
-			trim_on_write = false,
-			trim_first_line = false,
 		},
 	},
 }
