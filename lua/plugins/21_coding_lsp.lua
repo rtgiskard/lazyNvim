@@ -18,9 +18,8 @@ return {
 				lua_ls = {
 					settings = {
 						Lua = {
-							diagnostics = {
-								globals = { 'vim' },
-							},
+							runtime = { version = 'LuaJIT' },
+							workspace = { checkThirdParty = false },
 						},
 					},
 				},
@@ -45,10 +44,17 @@ return {
 			-- lsp server setup
 			'williamboman/mason.nvim',
 			'williamboman/mason-lspconfig.nvim',
+			'folke/lazydev.nvim',
 
 			-- lsp completion
 			'saghen/blink.cmp',
 		},
+	},
+
+	{
+		'folke/lazydev.nvim',
+		ft = 'lua',
+		opts = {},
 	},
 
 	-- easy lspconfig: implicitly load mason and auto install lsp servers
@@ -107,7 +113,6 @@ return {
 					'BufWritePost',
 					'BufReadPost',
 					'InsertLeave',
-					'TextChanged',
 				},
 			})
 		end,

@@ -70,17 +70,12 @@ M.plugins = {
 	},
 
 	lsp_servers = {
-		'clangd',
 		-- 'zls',
-		'gopls',
 		-- 'pylyzer',
 		'basedpyright',
 		'lua_ls',
 		-- 'vala_ls',
-		'rust_analyzer',
 		'biome', -- ft: json, ts, js, css
-		'buf_ls',
-		'docker_language_server',
 	},
 
 	-- linter: nvim-lint
