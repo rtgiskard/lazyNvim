@@ -40,7 +40,7 @@ end
 
 function M.trim_space()
 	local view = vim.fn.winsaveview()
-	vim.cmd([[%s/\s\+$//e]])
+	vim.cmd([[keeppatterns %s/\s\+$//e]])
 	vim.fn.winrestview(view)
 	M.notify_mini('trimmed trailing space')
 end
